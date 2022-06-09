@@ -1,0 +1,19 @@
+.container-fluid {
+    width: 100vw;
+    .row {
+        font-family: Roboto-Regular;
+        color: #575756;
+        .col,
+        .col-md-4 {
+            padding: 8px;
+            border-bottom: 0.5px dashed #ACACA5;
+            img {
+                width: 5%;
+            }
+        }
+        .primeraColumna,
+        .col-md-4 {
+            border-right: 0.5px dashed #ACACA5;
+        }
+    }
+}
