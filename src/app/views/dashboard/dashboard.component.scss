@@ -14,7 +14,7 @@
             }
             input {
                 font-family: Roboto-Light;
-                width: 50%;
+                width: 40%;
                 height: 20px;
                 background: #F2F2F2;
                 box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.25);
@@ -118,10 +118,13 @@ input:checked+.slider:before {
 
 @media (max-width:820px) {
     .row {
-        .col,
-        .col-md-3 {
-            img {
-                width: 8% !important;
+        .col {
+            .icon,
+            .icon-precio {
+                width: 10% !important;
+            }
+            .icon-precio {
+                margin-left: -2px!important;
             }
             input {
                 width: 40vw !important;
@@ -191,17 +194,23 @@ table {
     }
 }
 
+.containerTabla {
+    height: 500px;
+    overflow-y: visible;
+}
+
 
 /*Precio piso y precio propuesto*/
 
 .presioPiso {
-    width: 16vw;
-    height: 72vh;
+    width: 17vw;
+    height: 550px;
     position: absolute;
     right: 51vw;
     border: 1px dashed #ACACA5;
     border-radius: 8px;
     text-align: center;
+    margin-top: -60px;
     span {
         font-family: Roboto-semibold;
         font-size: 1em;
@@ -212,11 +221,12 @@ table {
 .presioPropuesto {
     position: absolute;
     width: 16vw;
-    height: 72vh;
+    height: 550px;
     right: 35vw;
     border: 1px dashed #ACACA5;
     border-radius: 8px;
     text-align: center;
+    margin-top: -60px;
     span {
         font-size: 1em;
         font-family: Roboto-semibold;
@@ -260,5 +270,146 @@ table {
             color: #1F3569;
             text-align: center;
         }
+    }
+}
+
+@media (max-width:820px) {
+    .resultados {
+        img {
+            width: 100% !important;
+        }
+    }
+    table {
+        font-size: 0.5em !important;
+        span {
+            margin-left: 0px !important;
+        }
+    }
+    .tbody {
+        overflow-x: scroll;
+    }
+    .containerTabla {
+        height: 550px;
+        overflow-y: visible;
+    }
+    .presioPiso {
+        width: 20vw;
+        height: 561px;
+        position: absolute;
+        right: 22vw;
+        span {
+            font-size: 13px;
+            margin-top: 20px !important;
+        }
+    }
+    .presioPropuesto {
+        position: absolute;
+        width: 18vw;
+        height: 561px;
+        right: 4vw;
+        span {
+            font-size: 13px;
+        }
+    }
+    span {
+        text-align: center;
+    }
+}
+
+@media (max-width:420px) {
+    .presioPiso {
+        height: 485px;
+        width: 18vw !important;
+        right: 4vw !important;
+    }
+    .presioPropuesto {
+        height: 485px;
+        width: 18vw !important;
+        right: 22vw !important;
+    }
+}
+
+@media (max-width:540px) {
+    .presioPiso {
+        height: 485px;
+        width: 18vw !important;
+        right: 4vw !important;
+    }
+    .presioPropuesto {
+        height: 485px;
+        width: 18vw !important;
+        right: 22vw !important;
+    }
+}
+
+@media (max-width:820px) {
+    .presioPiso {
+        width: 14vw;
+        height: 485px;
+        right: 52vw;
+    }
+    .presioPropuesto {
+        width: 14vw;
+        height: 485px;
+        right: 37vw;
+    }
+}
+
+@media (max-width:380px) {
+    .presioPiso {
+        height: 562px !important;
+        width: 20vw !important;
+        right: 4vw !important;
+    }
+    .presioPropuesto {
+        height: 562px !important;
+        width: 20vw !important;
+        right: 24vw !important;
+    }
+}
+
+@media (max-width:400px) {
+    .presioPiso {
+        height: 562px;
+    }
+    .presioPropuesto {
+        height: 562px;
+        width: 21vw !important;
+    }
+}
+
+@media (max-width:370px) {
+    .presioPiso {
+        height: 612px !important;
+    }
+    .presioPropuesto {
+        height: 612px !important;
+    }
+}
+
+@media (max-width:280px) {
+    .containerTabla {
+        height: 600px;
+    }
+    .presioPiso {
+        height: 676px !important;
+        width: 25vw !important;
+    }
+    .presioPropuesto {
+        height: 676px !important;
+        width: 25vw !important;
+        right: 29vw !important;
+    }
+}
+
+@media (max-width:1024px) {
+    .containerTabla {
+        height: 600px;
+    }
+}
+
+@media (max-width:912px) {
+    .containerTabla {
+        height: 600px;
     }
 }
