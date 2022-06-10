@@ -139,6 +139,46 @@ input:checked+.slider:before {
 table {
     font-family: Roboto-Light;
     font-size: 0.8em;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    span {
+        margin-left: 10px;
+    }
+    .txtResaltado {
+        font-family: Roboto-Semibold;
+        color: #1F3569;
+    }
+    tr:nth-of-type(odd) {
+        background: #f6f6fc;
+    }
+    canvas {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+    .color1 {
+        background-color: #203568;
+    }
+    .color2 {
+        background-color: #04539E;
+    }
+    .color3 {
+        background-color: #8DC6E6;
+    }
+    .color4 {
+        background-color: #3C4E6A;
+    }
+    .color5 {
+        background-color: #9D9D9C;
+    }
+    .color6 {
+        background-color: #D7D7D7;
+    }
+    .color7 {
+        background-color: #EE852F;
+    }
 }
 
 

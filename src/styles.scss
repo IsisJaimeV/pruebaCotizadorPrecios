@@ -40,3 +40,7 @@ body::-webkit-scrollbar-thumb {
     font-family: "Roboto-Bold";
     src: url('assets/fonts/Roboto-Black.ttf') format('truetype');
 }
+
+body {
+    overflow-x: hidden;
+}
