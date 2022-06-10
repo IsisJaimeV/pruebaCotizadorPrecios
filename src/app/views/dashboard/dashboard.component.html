@@ -2,23 +2,141 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <img src="../../../assets/icons/icon-codigo.png"> Código:
+            <img src="../../../assets/icons/icon-codigo.png" class="ms-3"> Código:
+            <select>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+              </select>
         </div>
         <div class="col primeraColumna">
             <img src="../../../assets/icons/icon-zona.png"> Zona:
+            <select>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+              </select>
         </div>
         <div class="col">
-            <img src="../../../assets/icons/icon-precio.png"> Precio propuesto
+            <img src="../../../assets/icons/icon-precio.png" class="ms-4"> Precio propuesto <input type="text">
         </div>
         <div class="col">
-            <img src="../../../assets/icons/icon-volumen.png"> Volumen
+            <img src="../../../assets/icons/icon-volumen.png"> Volumen <input type="text">
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            Distribuye Cryoinfra
+        <div class="col-md-3">
+            <div class="ms-3 d-flex align-items-center">Distribuye Cryoinfra
+                <label class="switch ms-4">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                  </label>
+            </div>
         </div>
         <div class="col">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-condensed ms-3">
+                <thead>
+                    <tr class="d-flex">
+                        <th class="col-5"></th>
+                        <th>Precio piso</th>
+                        <th></th>
+                        <th>Precio propuesto</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Costo de venta</td>
+                        <td>$ 14,82</td>
+                        <td>100%</td>
+                        <td>$ 12,00</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Gasto Cryogénico de mantenimiento de envases</td>
+                        <td>$ 14,82</td>
+                        <td>100%</td>
+                        <td>$ 12,00</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Gasto distribución</td>
+                        <td>$ 14,82</td>
+                        <td>100%</td>
+                        <td>$ 12,00</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Depreciación de activos</td>
+                        <td>$ 14,82</td>
+                        <td>100%</td>
+                        <td>$ 12,00</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Utilidad operativa antes de gastos de venta y administracion</td>
+                        <td>$ 14,82</td>
+                        <td>100%</td>
+                        <td>$ 12,00</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Gasto de venta</td>
+                        <td>$ 14,82</td>
+                        <td>100%</td>
+                        <td>$ 12,00</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Gasto de administración</td>
+                        <td>$ 14,82</td>
+                        <td>100%</td>
+                        <td>$ 12,00</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Utilidad operativa neta</td>
+                        <td>$ 14,82</td>
+                        <td>100%</td>
+                        <td>$ 12,00</td>
+                        <td>100%</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td>Facturación anual</td>
+                        <td>$ 14,82</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Utilidad operativa antes de GV y &GADM</td>
+                        <td>$ 14,82</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Utilidad Operativa Neta</td>
+                        <td>$ 14,82</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Utilidad operativa neta grupo (INFRA + CRYOINFRA)</td>
+                        <td>$ 14,82</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col mt-5 me-4 ms-5 resultados">
+            <div class="row">
+                <i class="fa fa-bar-chart d-inline-block" aria-hidden="true"></i>
+                <p class="d-inline-block">Gráfica </p>
+                <p class="d-inline-block">Resultados</p>
+            </div>
         </div>
     </div>
 </div>
