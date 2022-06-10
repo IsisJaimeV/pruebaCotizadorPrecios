@@ -179,6 +179,49 @@ table {
     .color7 {
         background-color: #EE852F;
     }
+    .gridTabla1 {
+        span {
+            margin-left: 55px;
+        }
+    }
+    .gridTabla2 {
+        span {
+            margin-right: 10px;
+        }
+    }
+}
+
+
+/*Precio piso y precio propuesto*/
+
+.presioPiso {
+    width: 16vw;
+    height: 72vh;
+    position: absolute;
+    right: 51vw;
+    border: 1px dashed #ACACA5;
+    border-radius: 8px;
+    text-align: center;
+    span {
+        font-family: Roboto-semibold;
+        font-size: 1em;
+        color: #5B9BD5;
+    }
+}
+
+.presioPropuesto {
+    position: absolute;
+    width: 16vw;
+    height: 72vh;
+    right: 35vw;
+    border: 1px dashed #ACACA5;
+    border-radius: 8px;
+    text-align: center;
+    span {
+        font-size: 1em;
+        font-family: Roboto-semibold;
+        color: #5B9BD5;
+    }
 }
 
 
