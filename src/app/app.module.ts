@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { HeaderComponent } from './common/header/header.component';
+import { FilterComponent } from './common/filter/filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     NotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

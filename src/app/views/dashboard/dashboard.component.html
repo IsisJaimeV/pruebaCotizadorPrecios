@@ -1,45 +1,6 @@
 <app-header></app-header>
+<app-filter></app-filter>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Código:
-            <input type="text">
-            <!-- <select>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-            </select> -->
-        </div>
-        <div class="col primeraColumna">
-            <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
-            <input type="text">
-            <!-- <select>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-            </select> -->
-        </div>
-        <div class="col">
-            <img src="../../../assets/icons/icon-precio.png" class="ms-4 icon-precio"> Precio propuesto <input type="text">
-        </div>
-        <div class="col">
-            <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="text">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="ms-3 d-flex align-items-center">Distribuye Cryoinfra
-                <label class="switch ms-4">
-                    <input type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
-        </div>
-        <div class="col">
-        </div>
-    </div>
     <div class="row">
         <div class="col-md-8 mt-5">
             <div class="containerTabla">
@@ -124,22 +85,22 @@
                     <table class="table table-condensed ">
                         <tbody>
                             <tr>
-                                <td class="txtResaltado col-md-6"><span>Facturación anual</span></td>
+                                <td class="txtResaltado col-md-6"><span>Facturación <b>anual</b></span></td>
                                 <td class="gridTabla1"><span>$ 148.201,86</span></td>
                                 <td class="gridTabla2"><span>$  120.000,00</span></td>
                             </tr>
                             <tr>
-                                <td class="txtResaltado"><span>Utilidad operativa antes de GV y &GADM</span></td>
+                                <td class="txtResaltado"><span>Utilidad operativa antes de GV y &GADM <b>anual</b></span></td>
                                 <td class="gridTabla1"><span>$ 148.201,86</span></td>
                                 <td class="gridTabla2"><span>$  120.000,00</span></td>
                             </tr>
                             <tr>
-                                <td class="txtResaltado"><span>Utilidad Operativa Neta</span></td>
+                                <td class="txtResaltado"><span>Utilidad Operativa Neta <b>anual</b></span></td>
                                 <td class="gridTabla1"><span>$ 148.201,86</span></td>
                                 <td class="gridTabla2"><span>$  120.000,00</span></td>
                             </tr>
                             <tr>
-                                <td class="txtResaltado"><span>Utilidad operativa neta grupo (INFRA + CRYOINFRA)</span></td>
+                                <td class="txtResaltado"><span>Utilidad operativa neta grupo (INFRA + CRYOINFRA) <b>anual</b></span></td>
                                 <td class="gridTabla1"><span>$ 148.201,86</span></td>
                                 <td class="gridTabla2"><span>$  120.000,00</span></td>
                             </tr>
@@ -151,31 +112,36 @@
         <div class="col mt-5 me-4 ms-4 resultados mb-2">
             <div class="row tituloResultados ">
                 <div class="ms-5 mt-3 ">
-                    <i class="fa fa-bar-chart me-2 "></i>
+                    <i class="fa fa-bar-chart me-2 mt-4"></i>
                     <span>Gráfica </span>
                     <span style="color: #EF872F; ">Resultados</span>
                 </div>
             </div>
-            <div class="row ">
-                <div class="col posible me-4 ms-4 mt-3 ">
-                    <div class="row division ">
-                        <p>Posible Perdida</p>
-                    </div>
-                    <div class="row valor ">
-                        <p>-30$</p>
-                    </div>
-                </div>
-                <div class="col posible me-4 ms-4 mt-3 ">
-                    <div class="row division ">
-                        <p>Posible Ganancia</p>
-                    </div>
-                    <div class="row valor ">
-                        <p>30$</p>
-                    </div>
-                </div>
-            </div>
             <div class="row mt-5 ">
                 <img src="../../../assets/img/gauge-prueba.png " style="width: 460px; ">
+            </div>
+            <div class="row mt-5">
+                <div class="col posible me-4 ms-4 mt-3 divUtilidad">
+                    <div class="row utilidad text-center">
+                        <img src="../../../assets/icons/icon-utilidad.png" class="iconUtilidad">
+                    </div>
+                    <div>
+                        <div class="row division ">
+                            <p>Utilidad operativa neta</p>
+                        </div>
+                        <div class="row valor ">
+                            <p><canvas class="colorUtilidad"></canvas><b>Positiva "Creación de Valor"</b></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col posible me-4 ms-4 mt-3 ">
+                    <div class="row division ">
+                        <p>Diferencia en utilidad precio propuesto vs. piso</p>
+                    </div>
+                    <div class="row valor ">
+                        <p>-$28.201,86</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
