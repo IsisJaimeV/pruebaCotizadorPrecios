@@ -241,14 +241,62 @@ table {
 
 @media (max-width:540px) {
     .presioPiso {
-        height: 485px;
+        height: 530px;
+        width: 21vw !important;
+        right: 22vw !important;
+    }
+    .presioPropuesto {
+        height: 530px;
         width: 18vw !important;
         right: 4vw !important;
     }
-    .presioPropuesto {
-        height: 485px;
-        width: 18vw !important;
-        right: 22vw !important;
+    .facturacion {
+        width: 55%!important;
+    }
+    .precioPiso {
+        margin-right: -5px !important;
+        font-size: 0.7em !important;
+    }
+    .utilidadOperativa {
+        margin-right: -170px !important;
+        font-size: 0.8em !important;
+        span {
+            color: white !important;
+        }
+    }
+    .gastosVentaValor,
+    .gastosCryogénicoValor,
+    .costosVentaValor {
+        font-size: 0.9em !important;
+    }
+    .gastosVenta {
+        margin-top: 55px !important;
+        margin-right: -55px !important;
+        font-size: 0.8em !important;
+        span {
+            color: white !important;
+        }
+    }
+    .gastosCryogénico {
+        margin-left: -110px !important;
+        margin-top: 40px !important;
+        font-size: 0.8em !important;
+        font-size: 0.8em !important;
+        span {
+            color: white !important;
+        }
+    }
+    .costosVenta {
+        font-size: 0.8em !important;
+        margin-left: -220px !important;
+        span {
+            color: white !important;
+        }
+    }
+    .costoOportunidad {
+        span {
+            font-size: 0.6em !important;
+        }
     }
 }
 
@@ -264,45 +312,98 @@ table {
     }
     .presioPiso {
         width: 14vw;
-        height: 485px;
+        height: 530px;
         right: 52vw;
     }
     .presioPropuesto {
         width: 14vw;
-        height: 485px;
-        right: 37vw;
+        height: 530px;
+        right: 36vw;
     }
 }
 
 @media (max-width:380px) {
     .presioPiso {
-        height: 610px !important;
+        height: 545px !important;
+        width: 21vw !important;
+        right: 25vw !important;
+    }
+    .presioPropuesto {
+        height: 545px !important;
         width: 20vw !important;
         right: 4vw !important;
     }
-    .presioPropuesto {
-        height: 610px !important;
-        width: 20vw !important;
-        right: 24vw !important;
+    .facturacion {
+        width: 55%!important;
+    }
+    .precioPiso {
+        margin-right: -5px !important;
+        font-size: 0.7em !important;
+    }
+    .utilidadOperativa {
+        margin-right: -170px !important;
+        font-size: 0.8em !important;
+        span {
+            color: white !important;
+        }
+    }
+    .gastosVentaValor,
+    .gastosCryogénicoValor,
+    .costosVentaValor {
+        font-size: 0.9em !important;
+    }
+    .gastosVenta {
+        margin-top: 55px !important;
+        margin-right: -55px !important;
+        font-size: 0.8em !important;
+        span {
+            color: white !important;
+        }
+    }
+    .gastosCryogénico {
+        margin-left: -110px !important;
+        margin-top: 40px !important;
+        font-size: 0.8em !important;
+        font-size: 0.8em !important;
+        span {
+            color: white !important;
+        }
+    }
+    .costosVenta {
+        font-size: 0.8em !important;
+        margin-left: -220px !important;
+        span {
+            color: white !important;
+        }
+    }
+    .costoOportunidad {
+        span {
+            font-size: 0.6em !important;
+        }
     }
 }
 
 @media (max-width:400px) {
     .presioPiso {
-        height: 610px;
+        height: 530px;
+        width: 20vw !important;
+        right: 25vw !important;
     }
     .presioPropuesto {
-        height: 610px;
-        width: 21vw !important;
+        height: 530px;
+        width: 20vw !important;
     }
 }
 
 @media (max-width:370px) {
     .presioPiso {
-        height: 612px !important;
+        height: 562px !important;
     }
     .presioPropuesto {
-        height: 612px !important;
+        height: 562px !important;
+    }
+    .resultados {
+        margin-top: 10px !important;
     }
 }
 
@@ -578,7 +679,7 @@ input:checked+.slider:before {
     font-size: 0.9em;
     position: absolute;
     margin-top: 40px;
-    margin-left: -300px;
+    margin-left: -280px;
 }
 
 .gauge-wraper {
