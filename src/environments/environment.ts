@@ -4,10 +4,13 @@
 
 
 export const environment = {
-  production: false,
-  env: '',
-  ambiente: '',
-  endp_precioPiso: ''
+  production: true,
+  env: 'dev',
+  ambiente: 'dev',
+  endp_precioPiso: 'https://infralink.azure-api.net/api/AnalisisPrecioInfra',
+  endp_linea: 'https://infralink.azure-api.net/api/linea',
+  endp_zona: 'https://infralink.azure-api.net/api/zona',
+  endp_codigo: 'https://infralink.azure-api.net/api/web/codigo/'
 };
 
 

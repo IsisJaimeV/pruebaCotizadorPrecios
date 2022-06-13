@@ -1,6 +1,58 @@
 <app-header></app-header>
-<app-filter></app-filter>
 <div class="container-fluid">
+    <form [formGroup]="filterForm" (ngSubmit)="consultarDatos(filterForm.value)">
+        <div class="row">
+            <div class="col">
+                <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Linea:
+                <select formControlName="linea" (change)="selectCodigo($event)" required>
+                    <option hidden [value]="" selected>Selecciona una Linea</option>
+                    <option [value]="item.linea" *ngFor="let item of linea">
+                        {{item.linea}} {{item.descripcion}}
+                    </option>
+                </select>
+            </div>
+            <div class="col">
+                <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Código:
+                <input type="text" formControlName="codigo" required>
+                <!-- <select formControlName="codigo" required>
+                    <option hidden [value]="" selected>Selecciona un código</option>
+                    <option [value]="item.codigo" *ngFor="let item of codigo">
+                        {{item.codigo}} {{item.descripcion}}
+                    </option>
+                </select> -->
+            </div>
+            <div class="col primeraColumna">
+                <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
+                <select formControlName="zona" required>
+                    <option hidden [value]="" selected>Selecciona una Zona</option>
+                    <option [value]="item.nombre" *ngFor="let item of zona">
+                        {{item.area}} {{item.nombre}}
+                    </option>
+                </select>
+            </div>
+            <div class="col">
+                <img src="../../../assets/icons/icon-precio.png" class="ms-4 icon-precio"> Precio propuesto <input type="text" formControlName="propuesto" required>
+            </div>
+            <div class="col">
+                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="text" formControlName="volumen" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="ms-3 d-flex align-items-center">
+                    <img src="../../../assets/img/cypto.png" class="icon-crypto"> Distribuye Cryoinfra
+                    <label class="switch ms-4">
+                        <input type="checkbox" formControlName="tipoOperacion" required>
+                        <span class="slider round" checked></span>
+                    </label>
+                </div>
+            </div>
+            <div class="col col-btnSimulacion">
+                <button class="btn btn-primary simulacion me-4" type="submit"><img src="../../../assets/icons/icon-ejecutar.png"><b>
+                        Ejecutar</b> simulación </button>
+            </div>
+        </div>
+    </form>
     <div class="row">
         <div class="col-md-8 mt-5">
             <div class="containerTabla">
@@ -14,69 +66,70 @@
                     <table class="table table-condensed">
                         <tbody>
                             <tr>
-                                <td class="col-md-6"></td>
-                                <td class="text-center">$ 14,82</td>
-                                <td class="text-center">100%</td>
-                                <td class="text-center">$ 12,00</td>
-                                <td class="text-center">100%</td>
+                                <td class="col-md-6" style="font-family: Roboto-Bold; color: #5B9BD5; font-size: 1.3em;">PRECIO</td>
+                                <td class="text-center">$ {{preciopisoGral | number}}</td>
+                                <td class="text-center">{{porpreciopisoGral | number}} %</td>
+                                <td class="text-center">$ {{pppreciopisoGral | number}}</td>
+                                <td class="text-center">{{ppporpreciopisoGral | number}} %</td>
                             </tr>
                             <tr>
                                 <td><canvas class="color1"></canvas> Costo de venta</td>
-                                <td class="text-center">$ 14,82</td>
-                                <td class="text-center">100%</td>
-                                <td class="text-center">$ 12,00</td>
-                                <td class="text-center">100%</td>
+                                <td class="text-center">$ {{costoVta | number}}</td>
+                                <td class="text-center">{{porcostoVta | number}} %</td>
+                                <td class="text-center">$ {{ppcostoVta | number}}</td>
+                                <td class="text-center">{{ppporcostoVta | number}} %</td>
                             </tr>
                             <tr>
                                 <td><canvas class="color2"></canvas>Gasto Cryogénico de mantenimiento de envases</td>
-                                <td class="text-center">$ 14,82</td>
-                                <td class="text-center">100%</td>
-                                <td class="text-center">$ 12,00</td>
-                                <td class="text-center">100%</td>
+                                <td class="text-center">$ {{gastoCryo | number}}</td>
+                                <td class="text-center">{{porgastoCryo | number}} %</td>
+                                <td class="text-center">$ {{ppgastoCryo | number}}</td>
+                                <td class="text-center">{{ppporgastoCryo | number}} %</td>
                             </tr>
                             <tr>
                                 <td><canvas class="color3"></canvas>Gasto distribución</td>
-                                <td class="text-center">$ 14,82</td>
-                                <td class="text-center">100%</td>
-                                <td class="text-center">$ 12,00</td>
-                                <td class="text-center">100%</td>
+                                <td class="text-center">$ {{gastoDist | number}}</td>
+                                <td class="text-center">{{porgastoDist | number}} %</td>
+                                <td class="text-center">$ {{ppgastoDist | number}}</td>
+                                <td class="text-center">{{ppporgastoDist | number}} %</td>
                             </tr>
                             <tr>
                                 <td><canvas class="color4"></canvas>Depreciación de activos</td>
-                                <td class="text-center">$ 14,82</td>
-                                <td class="text-center">100%</td>
-                                <td class="text-center">$ 12,00</td>
-                                <td class="text-center">100%</td>
+                                <td class="text-center">$ {{depreciacion | number}}</td>
+                                <td class="text-center">{{pordepreciacion | number}} %</td>
+                                <td class="text-center">$ {{ppdepreciacion | number}}</td>
+                                <td class="text-center">{{pppordepreciacion | number}} %</td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado">
                                     <span>Utilidad operativa antes de gastos de venta y administracion</span>
                                 </td>
-                                <td class="txtResaltado text-center">$ 14,82</td>
-                                <td class="txtResaltado text-center">100%</td>
-                                <td class="txtResaltado text-center">$ 12,00</td>
-                                <td class="txtResaltado text-center">100%</td>
+                                <td class="txtResaltado text-center">$ {{utilidadOperativaSinGVyGADM | number}}</td>
+                                <td class="txtResaltado text-center">{{porutilidadOperativaSinGVyGADM | number}} %</td>
+                                <td class="txtResaltado text-center">$ {{pputilidadOperativaSinGVyGADM | number}}</td>
+                                <td class="txtResaltado text-center">{{ppporutilidadOperativaSinGVyGADM | number}} %</td>
+
                             </tr>
                             <tr>
                                 <td><canvas class="color5"></canvas>Gasto de venta</td>
-                                <td class="text-center">$ 14,82</td>
-                                <td class="text-center">100%</td>
-                                <td class="text-center">$ 12,00</td>
-                                <td class="text-center">100%</td>
+                                <td class="text-center">$ {{gastoVta | number}}</td>
+                                <td class="text-center">{{porgastoVta | number}} %</td>
+                                <td class="text-center">$ {{ppgastoVta | number}}</td>
+                                <td class="text-center">{{ppporgastoVta | number}} %</td>
                             </tr>
                             <tr>
                                 <td><canvas class="color6"></canvas>Gasto de administración</td>
-                                <td class="text-center">$ 14,82</td>
-                                <td class="text-center">100%</td>
-                                <td class="text-center">$ 12,00</td>
-                                <td class="text-center">100%</td>
+                                <td class="text-center">$ {{gastoAdm | number}}</td>
+                                <td class="text-center">{{porgastoAdm | number}} %</td>
+                                <td class="text-center">$ {{ppgastoAdm | number}}</td>
+                                <td class="text-center">{{ppporgastoAdm | number}} %</td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado"><canvas class="color7"></canvas>Utilidad operativa neta</td>
-                                <td class="txtResaltado text-center">$ 14,82</td>
-                                <td class="txtResaltado text-center">100%</td>
-                                <td class="txtResaltado text-center">$ 12,00</td>
-                                <td class="txtResaltado text-center">100%</td>
+                                <td class="txtResaltado text-center">$ {{utilidadOperativaNeta | number}}</td>
+                                <td class="txtResaltado text-center">{{porutilidadOperativaNeta | number}} %</td>
+                                <td class="txtResaltado text-center">$ {{pputilidadOperativaNeta | number}}</td>
+                                <td class="txtResaltado text-center">{{ppporutilidadOperativaNeta | number}} %</td>
                             </tr>
                         </tbody>
                     </table>
@@ -86,23 +139,25 @@
                         <tbody>
                             <tr>
                                 <td class="txtResaltado col-md-6"><span>Facturación <b>anual</b></span></td>
-                                <td class="gridTabla1"><span>$ 148.201,86</span></td>
-                                <td class="gridTabla2"><span>$  120.000,00</span></td>
+                                <td class="gridTabla1"><span>$ {{tpfacturacionAnual | number}}</span></td>
+                                <td class="gridTabla2"><span>$ {{tppfacturacionAnual | number}}</span></td>
                             </tr>
                             <tr>
-                                <td class="txtResaltado"><span>Utilidad operativa antes de GV y &GADM <b>anual</b></span></td>
-                                <td class="gridTabla1"><span>$ 148.201,86</span></td>
-                                <td class="gridTabla2"><span>$  120.000,00</span></td>
+                                <td class="txtResaltado"><span>Utilidad operativa antes de GV y &GADM
+                                        <b>anual</b></span></td>
+                                <td class="gridTabla1"><span>$ {{tputilidadOperativaNeta | number}}</span></td>
+                                <td class="gridTabla2"><span>$ {{tpputilidadOperativaNeta | number}}</span></td>
                             </tr>
                             <tr>
                                 <td class="txtResaltado"><span>Utilidad Operativa Neta <b>anual</b></span></td>
-                                <td class="gridTabla1"><span>$ 148.201,86</span></td>
-                                <td class="gridTabla2"><span>$  120.000,00</span></td>
+                                <td class="gridTabla1"><span>$ {{tputilidadOperativaNetaCryoInfra | number}}</span></td>
+                                <td class="gridTabla2"><span>$ {{tpputilidadOperativaNetaCryoInfra | number}}</span></td>
                             </tr>
                             <tr>
-                                <td class="txtResaltado"><span>Utilidad operativa neta grupo (INFRA + CRYOINFRA) <b>anual</b></span></td>
-                                <td class="gridTabla1"><span>$ 148.201,86</span></td>
-                                <td class="gridTabla2"><span>$  120.000,00</span></td>
+                                <td class="txtResaltado"><span>Utilidad operativa neta grupo (INFRA + CRYOINFRA)
+                                        <b>anual</b></span></td>
+                                <td class="gridTabla1"><span>$ {{tputilidadOperativaSinGVyGADM | number}}</span></td>
+                                <td class="gridTabla2"><span>$ {{tpputilidadOperativaSinGVyGADM | number}}</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -117,8 +172,29 @@
                     <span style="color: #EF872F; ">Resultados</span>
                 </div>
             </div>
-            <div class="row mt-5">
-                <img src="../../../assets/img/gauge-prueba.png " style="width: 460px; ">
+            <div class="row mt-5 text-center">
+                <div class="d-flex justify-content-center">
+                    <div class="gauge-wraper">
+                        <div class="gauge" data-value="123L">
+                            <div class="range first-half"></div>
+                            <div class="range second-half"></div>
+                        </div>
+                        <div class="gauge-meter" id="gauge-meter" style="transform: rotate(90deg)" [ngStyle]="{'transform': 'rotate(' + angulo + 'deg)'}">
+                        </div>
+                    </div>
+                    <p class="precioPiso"><span style="color: #2264a1;">$ {{chartPrecioPiso | number}}</span> <br> <span style="color: #04539E;">Precio piso</span></p>
+                    <p class="utilidadOperativa"><span style="color: #575756;">Utilidad<br>operativa neta</span></p>
+                    <p class="gastosVenta"><span style="color: #575756;">Gastos de venta y <br> administración</span></p>
+                    <p class="gastosVentaValor"><span style="color: #04539E;">$ {{chartGastosVenta | number}}</span></p>
+                    <p class="gastosCryogénico"><span style="color: #575756;">Gastos cryogénico, <br> distribución y <br> depreciación</span></p>
+                    <p class="gastosCryogénicoValor"><span style="color: #04539E;">$ {{chartGastoCryogenico | number}}</span></p>
+                    <p class="costosVenta"><span style="color: #575756;">Costo de <br> venta</span></p>
+                    <p class="costosVentaValor"><span style="color: #04539E;">$ {{chartCostoVenta | number}}</span></p>
+                </div>
+            </div>
+            <div class="row text-center precioPropuesto">
+                <span style="color: #04539E; font-size: 0.7em;">$ {{chartPrecioPropuesto | number}}</span>
+                <span style="color: #04539E; font-size: 0.7em;">Precio propuesto</span>
             </div>
 
             <div class="row mt-2">
@@ -130,8 +206,8 @@
                         <div class="row division ">
                             <p class="mt-3"> Utilidad operativa neta</p>
                         </div>
-                        <div class="row valor ">
-                            <p><b>Positiva "Creación de Valor</b></p>
+                        <div class="row valor" id="utilidadNetaText">
+                            <p><b>{{utilidadNeta}}</b></p>
                         </div>
                     </div>
                 </div>
@@ -145,11 +221,11 @@
                             <p class="mt-3">Diferencia en utilidad precio propuesto vs. piso</p>
                         </div>
                         <div class="row valor ">
-                            <p>-$28.201,86</p>
+                            <p>$ {{difPrePropuestoVSPrePiso | number}}</p>
                         </div>
                     </div>
                     <div class="row costoOportunidad text-center" style="z-index: -9999;">
-                        <span> <i class="fa fa-circle" aria-hidden="true"></i> Costo de oportunidad </span>
+                        <span style="font-size: 0.7em;"> <i class="fa fa-circle" aria-hidden="true"></i> Costo de oportunidad </span>
                     </div>
                 </div>
 
