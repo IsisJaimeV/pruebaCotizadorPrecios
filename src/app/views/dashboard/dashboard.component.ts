@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PrecioPisoDAOService } from 'src/app/services/DAO/precio-piso-dao.service';
 import { getDatosI } from 'src/app/models/getDatos.interface';
+import { NgxSpinnerService } from "ngx-spinner";
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-dashboard',
@@ -94,7 +96,9 @@ export class DashboardComponent implements OnInit {
     tipoOperacion: new FormControl(false, Validators.required),
   })
 
-  constructor(private precioPiso: PrecioPisoDAOService) { }
+
+
+  constructor(private precioPiso: PrecioPisoDAOService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.selectLinea();
@@ -121,6 +125,26 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  validaVacio(valor: any) {
+    valor = valor.replace("&nbsp;", "");
+    valor = valor == undefined ? "" : valor;
+    if (!valor || 0 === valor.trim().length) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  loader() {
+    //ACTIVA LOADER
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 2000);
+  }
+
+
   consultarDatos(form: getDatosI) {
     console.log(form.codigo);
     console.log(form.propuesto);
@@ -128,7 +152,6 @@ export class DashboardComponent implements OnInit {
     console.log(form.zona);
 
     this.precioPiso.getDatos(form).subscribe(res => {
-
       // COSTO PRECIO PISO
       this.preciopisoGral = res.resultado.info.precioPiso.toFixed(2);
       this.costoVta = res.resultado.info.costoVta.toFixed(2);
@@ -173,22 +196,22 @@ export class DashboardComponent implements OnInit {
       }
 
       //GAUGE CHART
-      this.chartPrecioPropuesto = this.pppreciopisoGral;
+      this.chartPrecioPropuesto = res.resultado.graficaDto.precioPropuestoVPiso.toFixed(2);
       this.chartPrecioPiso = this.preciopisoGral;
       this.chartCostoVenta = res.resultado.graficaDto.costoVenta.toFixed(2);
       this.chartGastoCryogenico = res.resultado.graficaDto.gastoCryDep.toFixed(2);
       this.chartGastosVenta = res.resultado.graficaDto.gvAdmin.toFixed(2);
 
       const colorAngulo = res.resultado.graficaDto.color;
-      if (colorAngulo == 0){ // 0 ->Error de calculo
+      if (colorAngulo == 0) { // 0 ->Error de calculo
         this.angulo = -5;
-      } if (colorAngulo == 1){ // 1 ->Verde
+      } if (colorAngulo == 1) { // 1 ->Verde
         this.angulo = 170;
-      } if (colorAngulo == 2){ // 2 ->Rojo
+      } if (colorAngulo == 2) { // 2 ->Rojo
         this.angulo = 10;
-      } if (colorAngulo == 3){ // 3 ->Amarillo
+      } if (colorAngulo == 3) { // 3 ->Amarillo
         this.angulo = 120;
-      } if (colorAngulo == 4){ // 4 ->Naranja
+      } if (colorAngulo == 4) { // 4 ->Naranja
         this.angulo = 60;
       }
 
@@ -219,7 +242,14 @@ export class DashboardComponent implements OnInit {
       const diferencia = this.tpputilidadOperativaNeta - this.tputilidadOperativaNeta;
       diferencia.toFixed(2);
       console.log(diferencia);
-      this.difPrePropuestoVSPrePiso = diferencia
+      this.difPrePropuestoVSPrePiso = diferencia;
+    }, (errorServicio) => {
+      console.log(errorServicio);
+      Swal.fire(
+        'Intenta nuevamente',
+        'La consulta no fue validada',
+        'error'
+      )
     })
 
   }

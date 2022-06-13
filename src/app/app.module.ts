@@ -9,6 +9,8 @@ import { HeaderComponent } from './common/header/header.component';
 import { FilterComponent } from './common/filter/filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxSpinnerModule } from "ngx-spinner";  
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule  
   ],
   providers: [], 
   bootstrap: [AppComponent]

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Linea:
-                <select formControlName="linea" (change)="selectCodigo($event)" required>
+                <select formControlName="linea" (change)="selectCodigo($event)" id="linea">
                     <option hidden [value]="" selected>Selecciona una Linea</option>
                     <option [value]="item.linea" *ngFor="let item of linea">
                         {{item.linea}} {{item.descripcion}}
@@ -13,17 +13,17 @@
             </div>
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Código:
-                <!-- <input type="text" formControlName="codigo" required> -->
-                <select formControlName="codigo" required>
+                <input type="text" formControlName="codigo" id="codigoInput" required>
+                <!-- <select formControlName="codigo" required id="codigoSelect">
                     <option hidden [value]="" selected>Selecciona un código</option>
                     <option [value]="item.codigo" *ngFor="let item of codigo">
                         {{item.codigo}} {{item.descripcion}}
                     </option>
-                </select>
+                </select> -->
             </div>
             <div class="col primeraColumna">
                 <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
-                <select formControlName="zona" required>
+                <select formControlName="zona" required id="zona">
                     <option hidden [value]="" selected>Selecciona una Zona</option>
                     <option [value]="item.nombre" *ngFor="let item of zona">
                         {{item.area}} {{item.nombre}}
@@ -31,10 +31,10 @@
                 </select>
             </div>
             <div class="col">
-                <img src="../../../assets/icons/icon-precio.png" class="ms-4 icon-precio"> Precio propuesto <input type="text" formControlName="propuesto" required>
+                <img src="../../../assets/icons/icon-precio.png" class="ms-4 icon-precio"> Precio propuesto <input type="number" formControlName="propuesto" required id="precioPropuesto">
             </div>
             <div class="col">
-                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="text" formControlName="volumen" required>
+                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen">
             </div>
         </div>
         <div class="row">
@@ -42,14 +42,24 @@
                 <div class="ms-3 d-flex align-items-center">
                     <img src="../../../assets/img/cypto.png" class="icon-crypto"> Distribuye Cryoinfra
                     <label class="switch ms-4">
-                        <input type="checkbox" formControlName="tipoOperacion" required>
+                        <input type="checkbox" formControlName="tipoOperacion" required id="cryoinfra">
                         <span class="slider round" checked></span>
                     </label>
                 </div>
             </div>
             <div class="col col-btnSimulacion">
-                <button class="btn btn-primary simulacion me-4" type="submit"><img src="../../../assets/icons/icon-ejecutar.png"><b>
+                <button class="btn btn-primary simulacion me-4" type="submit" (click)="loader()"><img src="../../../assets/icons/icon-ejecutar.png"><b>
                         Ejecutar</b> simulación </button>
+            </div>
+        </div>
+        <div *ngIf="filterForm.controls['volumen'].invalid && filterForm.controls['volumen'].touched" class="alert alert-danger">
+            <div *ngIf="filterForm.controls['volumen'].errors?.required">
+                El campo volumen es requerido.
+            </div>
+        </div>
+        <div *ngIf="filterForm.controls['propuesto'].invalid && filterForm.controls['propuesto'].touched" class="alert alert-danger">
+            <div *ngIf="filterForm.controls['propuesto'].errors?.required">
+                El campo precio propuesto es requerido.
             </div>
         </div>
     </form>
@@ -216,7 +226,7 @@
                     <div class="row diferencia text-center">
                         <img src="../../../assets/icons/icon-diferencia.png" class="iconRes">
                     </div>
-                    <div class="posible" style="z-index: 9999; position: relative;">
+                    <div class="posible" style=" position: relative;">
                         <div class="row division ">
                             <p class="mt-3">Diferencia en utilidad precio propuesto vs. piso</p>
                         </div>
@@ -225,7 +235,7 @@
                         </div>
                     </div>
                     <div class="row costoOportunidad text-center" style="z-index: -9999;">
-                        <span style="font-size: 0.7em;"> <i class="fa fa-circle" aria-hidden="true"></i> Costo de oportunidad </span>
+                        <span style="font-size: 0.7em;"> Costo de oportunidad </span>
                     </div>
                 </div>
 
@@ -233,3 +243,6 @@
         </div>
     </div>
 </div>
+<ngx-spinner type="ball-scale-multiple">
+    <p style="color: white"> Calculando datos... </p>
+</ngx-spinner>
