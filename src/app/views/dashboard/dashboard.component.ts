@@ -196,7 +196,7 @@ export class DashboardComponent implements OnInit {
       }
 
       //GAUGE CHART
-      this.chartPrecioPropuesto = res.resultado.graficaDto.precioPropuestoVPiso.toFixed(2);
+      this.chartPrecioPropuesto = this.pppreciopisoGral;
       this.chartPrecioPiso = this.preciopisoGral;
       this.chartCostoVenta = res.resultado.graficaDto.costoVenta.toFixed(2);
       this.chartGastoCryogenico = res.resultado.graficaDto.gastoCryDep.toFixed(2);
@@ -239,10 +239,8 @@ export class DashboardComponent implements OnInit {
       this.tpputilidadOperativaSinGVyGADM = res.resultado.totalesPropuesto.utilidadOperativaSinGVyGADM.toFixed(2);
 
       //DIFERENCIA UTILIDAD PRECIO PROPUESTO VS PISO
-      const diferencia = this.tpputilidadOperativaNeta - this.tputilidadOperativaNeta;
-      diferencia.toFixed(2);
-      console.log(diferencia);
-      this.difPrePropuestoVSPrePiso = diferencia;
+      this.difPrePropuestoVSPrePiso = res.resultado.graficaDto.precioPropuestoVPiso.toFixed(2);
+
     }, (errorServicio) => {
       console.log(errorServicio);
       Swal.fire(
