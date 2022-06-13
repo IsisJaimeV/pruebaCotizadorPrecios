@@ -13,13 +13,13 @@
             </div>
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Código:
-                <input type="text" formControlName="codigo" required>
-                <!-- <select formControlName="codigo" required>
+                <!-- <input type="text" formControlName="codigo" required> -->
+                <select formControlName="codigo" required>
                     <option hidden [value]="" selected>Selecciona un código</option>
                     <option [value]="item.codigo" *ngFor="let item of codigo">
                         {{item.codigo}} {{item.descripcion}}
                     </option>
-                </select> -->
+                </select>
             </div>
             <div class="col primeraColumna">
                 <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:

@@ -583,11 +583,14 @@ input:checked+.slider:before {
     body {
         overflow-x: hidden;
     }
+    .icon {
+        width: 8% !important;
+    }
     .row {
         .col {
             .icon,
             .icon-precio {
-                width: 10% !important;
+                width: 8% !important;
             }
             .icon-precio {
                 margin-left: -2px!important;
