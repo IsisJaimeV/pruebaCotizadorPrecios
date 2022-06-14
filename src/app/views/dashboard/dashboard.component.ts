@@ -212,7 +212,7 @@ export class DashboardComponent implements OnInit {
         this.angulo = 60;
       }
       
-      this.costoVariable = 'Costo de oportunidad';
+      this.costoVariable = res.resultado.graficaDto.analisisOportunidad;
       
       // PORCENTAJE PRECIO PROPUESTO
       this.ppporpreciopisoGral = res.resultado.porcentajePropuesto.precioPiso.toFixed(2);
