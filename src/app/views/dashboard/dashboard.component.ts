@@ -127,17 +127,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  validaVacio(valor: any) {
-    valor = valor.replace("&nbsp;", "");
-    valor = valor == undefined ? "" : valor;
-    if (!valor || 0 === valor.trim().length) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
   loader() {
     //ACTIVA LOADER
     this.spinner.show();
@@ -150,37 +139,37 @@ export class DashboardComponent implements OnInit {
     this.precioPiso.getDatos(form).subscribe(res => {
 
       // COSTO PRECIO PISO
-      this.preciopisoGral = res.resultado.info.precioPiso;
-      this.costoVta = res.resultado.info.costoVta;
-      this.gastoCryo = res.resultado.info.gastoCryo;
-      this.gastoDist = res.resultado.info.gastoDist;
-      this.depreciacion = res.resultado.info.depreciacion;
-      this.utilidadOperativaSinGVyGADM = res.resultado.info.utilidadOperativaSinGVyGADM;
-      this.gastoVta = res.resultado.info.gastoVta;
-      this.gastoAdm = res.resultado.info.gastoAdm;
-      this.utilidadOperativaNeta = res.resultado.info.utilidadOperativaNeta;
+      this.preciopisoGral = res.resultado.info.precioPiso.toFixed(2);
+      this.costoVta = res.resultado.info.costoVta.toFixed(2);
+      this.gastoCryo = res.resultado.info.gastoCryo.toFixed(2);
+      this.gastoDist = res.resultado.info.gastoDist.toFixed(2);
+      this.depreciacion = res.resultado.info.depreciacion.toFixed(2);
+      this.utilidadOperativaSinGVyGADM = res.resultado.info.utilidadOperativaSinGVyGADM.toFixed(2);
+      this.gastoVta = res.resultado.info.gastoVta.toFixed(2);
+      this.gastoAdm = res.resultado.info.gastoAdm.toFixed(2);
+      this.utilidadOperativaNeta = res.resultado.info.utilidadOperativaNeta.toFixed(2);
 
       // PORCENTAJE PRECIO PISO
-      this.porpreciopisoGral = res.resultado.porcentajePrecioPiso.precioPiso;
-      this.porcostoVta = res.resultado.porcentajePrecioPiso.costoVta;
-      this.porgastoCryo = res.resultado.porcentajePrecioPiso.gastoCryo;
-      this.porgastoDist = res.resultado.porcentajePrecioPiso.gastoDist;
-      this.pordepreciacion = res.resultado.porcentajePrecioPiso.depreciacion;
-      this.porutilidadOperativaSinGVyGADM = res.resultado.porcentajePrecioPiso.utilidadOperativaSinGVyGADM;
-      this.porgastoVta = res.resultado.porcentajePrecioPiso.gastoVta;
-      this.porgastoAdm = res.resultado.porcentajePrecioPiso.gastoAdm;
-      this.porutilidadOperativaNeta = res.resultado.porcentajePrecioPiso.utilidadOperativaNeta;
+      this.porpreciopisoGral = res.resultado.porcentajePrecioPiso.precioPiso.toFixed(1);
+      this.porcostoVta = res.resultado.porcentajePrecioPiso.costoVta.toFixed(1);
+      this.porgastoCryo = res.resultado.porcentajePrecioPiso.gastoCryo.toFixed(1);
+      this.porgastoDist = res.resultado.porcentajePrecioPiso.gastoDist.toFixed(1);
+      this.pordepreciacion = res.resultado.porcentajePrecioPiso.depreciacion.toFixed(1);
+      this.porutilidadOperativaSinGVyGADM = res.resultado.porcentajePrecioPiso.utilidadOperativaSinGVyGADM.toFixed(1);
+      this.porgastoVta = res.resultado.porcentajePrecioPiso.gastoVta.toFixed(1);
+      this.porgastoAdm = res.resultado.porcentajePrecioPiso.gastoAdm.toFixed(1);
+      this.porutilidadOperativaNeta = res.resultado.porcentajePrecioPiso.utilidadOperativaNeta.toFixed(1);
 
       // COSTO PRECIO PROPUESTO
-      this.pppreciopisoGral = res.resultado.infoPropuesto.precioPiso;
-      this.ppcostoVta = res.resultado.infoPropuesto.costoVta;
-      this.ppgastoCryo = res.resultado.infoPropuesto.gastoCryo;
-      this.ppgastoDist = res.resultado.infoPropuesto.gastoDist;
-      this.ppdepreciacion = res.resultado.infoPropuesto.depreciacion;
-      this.pputilidadOperativaSinGVyGADM = res.resultado.infoPropuesto.utilidadOperativaSinGVyGADM;
-      this.ppgastoVta = res.resultado.infoPropuesto.gastoVta;
-      this.ppgastoAdm = res.resultado.infoPropuesto.gastoAdm;
-      this.pputilidadOperativaNeta = res.resultado.infoPropuesto.utilidadOperativaNeta;
+      this.pppreciopisoGral = res.resultado.infoPropuesto.precioPiso.toFixed(2);
+      this.ppcostoVta = res.resultado.infoPropuesto.costoVta.toFixed(2);
+      this.ppgastoCryo = res.resultado.infoPropuesto.gastoCryo.toFixed(2);
+      this.ppgastoDist = res.resultado.infoPropuesto.gastoDist.toFixed(2);
+      this.ppdepreciacion = res.resultado.infoPropuesto.depreciacion.toFixed(2);
+      this.pputilidadOperativaSinGVyGADM = res.resultado.infoPropuesto.utilidadOperativaSinGVyGADM.toFixed(2);
+      this.ppgastoVta = res.resultado.infoPropuesto.gastoVta.toFixed(2);
+      this.ppgastoAdm = res.resultado.infoPropuesto.gastoAdm.toFixed(2);
+      this.pputilidadOperativaNeta = res.resultado.infoPropuesto.utilidadOperativaNeta.toFixed(2);
 
       //UTILIDAD OPERATIVA NETA
       const utilidad = this.pputilidadOperativaNeta;
@@ -215,15 +204,15 @@ export class DashboardComponent implements OnInit {
       this.costoVariable = res.resultado.graficaDto.analisisOportunidad;
       
       // PORCENTAJE PRECIO PROPUESTO
-      this.ppporpreciopisoGral = res.resultado.porcentajePropuesto.precioPiso;
-      this.ppporcostoVta = res.resultado.porcentajePropuesto.costoVta;
-      this.ppporgastoCryo = res.resultado.porcentajePropuesto.gastoCryo;
-      this.ppporgastoDist = res.resultado.porcentajePropuesto.gastoDist;
-      this.pppordepreciacion = res.resultado.porcentajePropuesto.depreciacion;
-      this.ppporutilidadOperativaSinGVyGADM = res.resultado.porcentajePropuesto.utilidadOperativaSinGVyGADM;
-      this.ppporgastoVta = res.resultado.porcentajePropuesto.gastoVta;
-      this.ppporgastoAdm = res.resultado.porcentajePropuesto.gastoAdm;
-      this.ppporutilidadOperativaNeta = res.resultado.porcentajePropuesto.utilidadOperativaNeta;
+      this.ppporpreciopisoGral = res.resultado.porcentajePropuesto.precioPiso.toFixed(1);
+      this.ppporcostoVta = res.resultado.porcentajePropuesto.costoVta.toFixed(1);
+      this.ppporgastoCryo = res.resultado.porcentajePropuesto.gastoCryo.toFixed(1);
+      this.ppporgastoDist = res.resultado.porcentajePropuesto.gastoDist.toFixed(1);
+      this.pppordepreciacion = res.resultado.porcentajePropuesto.depreciacion.toFixed(1);
+      this.ppporutilidadOperativaSinGVyGADM = res.resultado.porcentajePropuesto.utilidadOperativaSinGVyGADM.toFixed(1);
+      this.ppporgastoVta = res.resultado.porcentajePropuesto.gastoVta.toFixed(1);
+      this.ppporgastoAdm = res.resultado.porcentajePropuesto.gastoAdm.toFixed(1);
+      this.ppporutilidadOperativaNeta = res.resultado.porcentajePropuesto.utilidadOperativaNeta.toFixed(1);
 
       // TOTALES PRECIO PISO
       this.tpfacturacionAnual = res.resultado.totales.facturacionAnual;
