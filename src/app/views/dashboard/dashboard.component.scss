@@ -133,10 +133,10 @@ table {
             border-bottom: 2px dashed #1F3569;
         }
         .valor {
-            font-size: 0.7em !important;
+            font-size: 1em !important;
             line-height: 1em;
             margin-top: 10px;
-            font-family: Roboto-Regular;
+            font-family: Roboto-Semibold;
             color: #1F3569;
             text-align: center;
         }
@@ -504,7 +504,8 @@ table {
             input:focus {
                 outline: none;
             }
-            select {
+            select,
+            datalist {
                 font-family: Roboto-Light;
                 width: 61%;
                 height: 20px;
@@ -516,10 +517,12 @@ table {
                 -webkit-appearance: none;
                 -moz-appearance: none;
             }
-            select:focus {
+            select:focus,
+            datalist:focus {
                 outline: none;
             }
-            select:after {
+            select:after,
+            datalist:after {
                 border-color: #fff transparent transparent transparent;
             }
         }
@@ -566,7 +569,7 @@ table {
     width: 16px;
     left: 0px;
     bottom: 1px;
-    background-color: #CBCBCA;
+    background-color: #617E41;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -584,7 +587,7 @@ input:focus+.slider {
 }
 
 input:checked+.slider:before {
-    background-color: #617E41;
+    background-color: #CBCBCA;
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
@@ -712,7 +715,7 @@ input:checked+.slider:before {
     font-size: 0.7em;
     position: absolute;
     margin-top: 100px;
-    margin-left: -360px;
+    margin-left: -340px;
 }
 
 .costosVentaValor {

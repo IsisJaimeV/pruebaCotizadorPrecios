@@ -87,6 +87,10 @@ export class DashboardComponent implements OnInit {
   chartGastoCryogenico: number = 0;
   chartGastosVenta: number = 0;
 
+  //DIFERENCIA PARTE INFERIOR
+  costoVariable: string = '-';
+
+  //FORM
   filterForm = new FormGroup({
     linea: new FormControl('', Validators.required),
     codigo: new FormControl('', Validators.required),
@@ -95,8 +99,6 @@ export class DashboardComponent implements OnInit {
     volumen: new FormControl('', Validators.required),
     tipoOperacion: new FormControl(false, Validators.nullValidator),
   })
-
-
 
   constructor(private precioPiso: PrecioPisoDAOService, private spinner: NgxSpinnerService) { }
 
@@ -144,14 +146,9 @@ export class DashboardComponent implements OnInit {
     }, 2000);
   }
 
-
   consultarDatos(form: getDatosI) {
-    console.log(form.codigo);
-    console.log(form.propuesto);
-    console.log(form.tipoOperacion);
-    console.log(form.zona);
-
     this.precioPiso.getDatos(form).subscribe(res => {
+
       // COSTO PRECIO PISO
       this.preciopisoGral = res.resultado.info.precioPiso.toFixed(2);
       this.costoVta = res.resultado.info.costoVta.toFixed(2);
@@ -214,7 +211,9 @@ export class DashboardComponent implements OnInit {
       } if (colorAngulo == 4) { // 4 ->Naranja
         this.angulo = 60;
       }
-
+      
+      this.costoVariable = 'Costo de oportunidad';
+      
       // PORCENTAJE PRECIO PROPUESTO
       this.ppporpreciopisoGral = res.resultado.porcentajePropuesto.precioPiso.toFixed(2);
       this.ppporcostoVta = res.resultado.porcentajePropuesto.costoVta.toFixed(2);
@@ -240,6 +239,11 @@ export class DashboardComponent implements OnInit {
 
       //DIFERENCIA UTILIDAD PRECIO PROPUESTO VS PISO
       this.difPrePropuestoVSPrePiso = res.resultado.graficaDto.precioPropuestoVPiso.toFixed(2);
+      if( this.difPrePropuestoVSPrePiso >= 0){
+        (document.getElementById('difPrePropuestoVSPrePiso') as HTMLDivElement).style.color = "green";
+      }else{
+        (document.getElementById('difPrePropuestoVSPrePiso') as HTMLDivElement).style.color = "red";
+      }
 
     }, (errorServicio) => {
       console.log(errorServicio);
