@@ -239,6 +239,7 @@ export class DashboardComponent implements OnInit {
 
       //DIFERENCIA UTILIDAD PRECIO PROPUESTO VS PISO
       this.difPrePropuestoVSPrePiso = res.resultado.graficaDto.precioPropuestoVPiso;
+      
       if( this.difPrePropuestoVSPrePiso >= 0){
         (document.getElementById('difPrePropuestoVSPrePiso') as HTMLDivElement).style.color = "green";
       }else{
