@@ -93,6 +93,7 @@ export class DashboardComponent implements OnInit {
   //NG MODEL
   selectedCodigoSpan: string = '-';
 
+
   //FORM
   filterForm = new FormGroup({
     linea: new FormControl('', Validators.required),
@@ -143,15 +144,15 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  loaderCheckbox(form: getDatosI) {
+  loaderCheckbox(form: Object) {
     //ACTIVA LOADER
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
     }, 2000);
 
+    
     this.precioPiso.getDatos(form).subscribe(res => {
-
       // COSTO PRECIO PISO
       this.preciopisoGral = res.resultado.info.precioPiso.toFixed(2);
       this.costoVta = res.resultado.info.costoVta.toFixed(2);
