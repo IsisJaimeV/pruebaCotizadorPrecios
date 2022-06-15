@@ -13,6 +13,7 @@
             </div>
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Código:
+                <!-- <input type="text" formControlName="codigo"> -->
                 <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" style="width: 11vw;">
                 <datalist required id="filterCodigo">
                     <option [value]="item.codigo" *ngFor="let item of codigo">
