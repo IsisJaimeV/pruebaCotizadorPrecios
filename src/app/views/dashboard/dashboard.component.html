@@ -14,9 +14,9 @@
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Código:
                 <!-- <input type="text" formControlName="codigo"> -->
-                <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" style="width: 11vw;">
+                <input formControlName="codigo" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" style="width: 11vw;">
                 <datalist required id="filterCodigo">
-                    <option [value]="item.codigo" *ngFor="let item of codigo">
+                    <option [value]="item.codigo" *ngFor="let item of codigo" (ngModelChange)="selectedDescripcionSpan = item">
                         {{item.codigo}} {{item.descripcion}}
                     </option>
                 </datalist>
@@ -43,12 +43,13 @@
                     <img src="../../../assets/img/cypto.png" class="icon-crypto"> Distribuye Cryoinfra
                     <label class="switch ms-4">
                         <input type="checkbox" formControlName="tipoOperacion" id="cryoinfra"> <!--(click)="loaderCheckbox(filterForm.value)"-->
-                        <span class="slider round" checked ></span>
+                        <span class="slider round" checked></span>
                     </label>
+
                 </div>
             </div>
             <div class="col text-center">
-                <span>{{selectedCodigoSpan}}</span>
+                <!-- <span>{{selectedCodigoSpan}} {{selectedDescripcionSpan}}</span> -->
             </div>
             <div class="col col-btnSimulacion">
                 <button class="btn btn-primary simulacion me-4" type="submit" (click)="loader()" [disabled]="!filterForm.valid"><img src="../../../assets/icons/icon-ejecutar.png"><b>
@@ -59,52 +60,52 @@
     <div class="row">
         <div class="col-md-8 mt-5">
             <div class="containerTabla">
-                <div class="presioPiso">
+                <div class="presioPiso me-3">
                     <span class="mt-5">Precio piso</span>
                 </div>
-                <div class="presioPropuesto">
+                <div class="presioPropuesto me-3">
                     <span>Precio propuesto</span>
                 </div>
                 <div class="ms-3 mt-5">
-                    <table class="table table-condensed">
+                    <table class="table table-condensed text-center">
                         <tbody>
                             <tr>
-                                <td class="col-md-6" style="font-family: Roboto-Bold; color: #5B9BD5; font-size: 1.3em;">PRECIO</td>
+                                <td class="col-md-5 precioColumna" style="font-family: Roboto-Bold; color: #5B9BD5; font-size: 1.3em; text-align: left !important;">PRECIO</td>
                                 <td class="text-center">$ {{preciopisoGral | number}}</td>
                                 <td class="text-center">{{porpreciopisoGral | number}} %</td>
                                 <td class="text-center">$ {{pppreciopisoGral | number}}</td>
                                 <td class="text-center">{{ppporpreciopisoGral | number}} %</td>
                             </tr>
                             <tr>
-                                <td><canvas class="color1"></canvas> Costo de venta</td>
+                                <td style="text-align: left !important;"><canvas class="color1"></canvas> Costo de venta</td>
                                 <td class="text-center">$ {{costoVta | number}}</td>
                                 <td class="text-center">{{porcostoVta | number}} %</td>
                                 <td class="text-center">$ {{ppcostoVta | number}}</td>
                                 <td class="text-center">{{ppporcostoVta | number}} %</td>
                             </tr>
                             <tr>
-                                <td><canvas class="color2"></canvas>Gasto de mantenimiento cryogénico y envases</td>
+                                <td style="text-align: left !important;"><canvas class="color2"></canvas>Gasto de mantenimiento cryogénico y envases</td>
                                 <td class="text-center">$ {{gastoCryo | number}}</td>
                                 <td class="text-center">{{porgastoCryo | number}} %</td>
                                 <td class="text-center">$ {{ppgastoCryo | number}}</td>
                                 <td class="text-center">{{ppporgastoCryo | number}} %</td>
                             </tr>
                             <tr>
-                                <td><canvas class="color3"></canvas>Gasto distribución</td>
+                                <td style="text-align: left !important;"><canvas class="color3"></canvas>Gasto distribución</td>
                                 <td class="text-center">$ {{gastoDist | number}}</td>
                                 <td class="text-center">{{porgastoDist | number}} %</td>
                                 <td class="text-center">$ {{ppgastoDist | number}}</td>
                                 <td class="text-center">{{ppporgastoDist | number}} %</td>
                             </tr>
                             <tr>
-                                <td><canvas class="color4"></canvas>Depreciación de activos</td>
+                                <td style="text-align: left !important;"><canvas class="color4"></canvas>Depreciación de activos</td>
                                 <td class="text-center">$ {{depreciacion | number}}</td>
                                 <td class="text-center">{{pordepreciacion | number}} %</td>
                                 <td class="text-center">$ {{ppdepreciacion | number}}</td>
                                 <td class="text-center">{{pppordepreciacion | number}} %</td>
                             </tr>
                             <tr>
-                                <td class="txtResaltado">
+                                <td class="txtResaltado" style="text-align: left !important;">
                                     <span>Utilidad operativa antes de gastos de venta y administracion</span>
                                 </td>
                                 <td class="txtResaltado text-center">$ {{utilidadOperativaSinGVyGADM | number}}</td>
@@ -114,21 +115,21 @@
 
                             </tr>
                             <tr>
-                                <td><canvas class="color5"></canvas>Gasto de venta</td>
+                                <td style="text-align: left !important;"><canvas class="color5"></canvas>Gasto de venta</td>
                                 <td class="text-center">$ {{gastoVta | number}}</td>
                                 <td class="text-center">{{porgastoVta | number}} %</td>
                                 <td class="text-center">$ {{ppgastoVta | number}}</td>
                                 <td class="text-center">{{ppporgastoVta | number}} %</td>
                             </tr>
                             <tr>
-                                <td><canvas class="color6"></canvas>Gasto de administración</td>
+                                <td style="text-align: left !important;"><canvas class="color6"></canvas>Gasto de administración</td>
                                 <td class="text-center">$ {{gastoAdm | number}}</td>
                                 <td class="text-center">{{porgastoAdm | number}} %</td>
                                 <td class="text-center">$ {{ppgastoAdm | number}}</td>
                                 <td class="text-center">{{ppporgastoAdm | number}} %</td>
                             </tr>
                             <tr>
-                                <td class="txtResaltado"><canvas class="color7"></canvas>Utilidad operativa neta</td>
+                                <td class="txtResaltado" style="text-align: left !important;"><canvas class="color7"></canvas>Utilidad operativa neta</td>
                                 <td class="txtResaltado text-center">$ {{utilidadOperativaNeta | number}}</td>
                                 <td class="txtResaltado text-center">{{porutilidadOperativaNeta | number}} %</td>
                                 <td class="txtResaltado text-center">$ {{pputilidadOperativaNeta | number}}</td>

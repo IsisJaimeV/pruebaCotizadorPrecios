@@ -327,16 +327,25 @@ table {
     }
 }
 
+@media (max-width:1280px) {
+    .presioPiso {
+        height: 575px !important;
+    }
+    .presioPropuesto {
+        height: 575px !important
+    }
+}
+
 @media (max-width:380px) {
     .presioPiso {
         height: 545px !important;
         width: 21vw !important;
-        right: 25vw !important;
+        right: 23vw !important;
     }
     .presioPropuesto {
         height: 545px !important;
         width: 20vw !important;
-        right: 4vw !important;
+        right: 2vw !important;
     }
     .facturacion {
         width: 55%!important;
@@ -457,15 +466,21 @@ table {
         height: 600px;
         width: 95vw;
     }
+    .precioColumna {
+        width: 50%;
+    }
+    .facturacion {
+        width: 50% !important;
+    }
     .presioPiso {
         height: 576px !important;
         width: 22vw !important;
-        right: 25vw !important;
+        right: 20vw !important;
     }
     .presioPropuesto {
         height: 576px !important;
         width: 22vw !important;
-        right: 3vw !important;
+        right: -2vw !important;
     }
     .gridTabla1 {
         span {
