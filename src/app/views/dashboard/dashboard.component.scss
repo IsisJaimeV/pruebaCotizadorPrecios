@@ -661,6 +661,9 @@ input:checked+.slider:before {
     }
     .col-btnSimulacion {
         padding: 3vh !important;
+        .simulacion {
+            width: 40%;
+        }
     }
     .simulacion {
         margin-top: -20px;

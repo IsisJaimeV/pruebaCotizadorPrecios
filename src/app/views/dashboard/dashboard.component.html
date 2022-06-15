@@ -14,7 +14,7 @@
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Código:
                 <!-- <input type="text" formControlName="codigo"> -->
-                <input formControlName="codigo" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" style="width: 11vw;">
+                <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" style="width: 11vw;">
                 <datalist required id="filterCodigo">
                     <option [value]="item.codigo" *ngFor="let item of codigo" (ngModelChange)="selectedDescripcionSpan = item">
                         {{item.codigo}} {{item.descripcion}}
@@ -34,7 +34,7 @@
                 <img src="../../../assets/icons/icon-precio.png" class="ms-4 icon-precio"> Precio propuesto <input type="number" formControlName="propuesto" id="precioPropuesto">
             </div>
             <div class="col">
-                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen"> <span> M3</span>
+                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen"> <span> </span>
             </div>
         </div>
         <div class="row">
@@ -42,14 +42,13 @@
                 <div class="ms-3 d-flex align-items-center">
                     <img src="../../../assets/img/cypto.png" class="icon-crypto"> Distribuye Cryoinfra
                     <label class="switch ms-4">
-                        <input type="checkbox" formControlName="tipoOperacion" id="cryoinfra"> <!--(click)="loaderCheckbox(filterForm.value)"-->
+                        <input type="checkbox" formControlName="tipoOperacion" id="cryoinfra" (change)="loaderCheckbox(filterForm.value)"> <!--(click)="loaderCheckbox(filterForm.value)"-->
                         <span class="slider round" checked></span>
                     </label>
-
                 </div>
             </div>
-            <div class="col text-center">
-                <!-- <span>{{selectedCodigoSpan}} {{selectedDescripcionSpan}}</span> -->
+            <div class="col text-center d-flex align-items-center">
+                <span style="font-size: 0.8em;">{{selectedCodigoSpan}} {{selectedDescripcionSpan}}</span>
             </div>
             <div class="col col-btnSimulacion">
                 <button class="btn btn-primary simulacion me-4" type="submit" (click)="loader()" [disabled]="!filterForm.valid"><img src="../../../assets/icons/icon-ejecutar.png"><b>

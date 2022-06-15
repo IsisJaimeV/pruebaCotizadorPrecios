@@ -115,7 +115,6 @@ export class DashboardComponent implements OnInit {
   selectLinea() {
     this.precioPiso.getLinea().subscribe(res => {
       this.linea = res;
-
     });
   }
 
@@ -126,10 +125,16 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  esCodigo(des: any, codigo: any) {
+    return des.codigo === codigo;
+}
+
   selectedCodigo(event: any) {
     let value = event.target.value;
-    console.log(value)
     this.selectedCodigoSpan = value;
+
+    var descipcion = this.codigo.find(resp => resp.codigo == value)
+    this.selectedDescripcionSpan = descipcion.descripcion;
   }
 
   selectZona() {
@@ -150,6 +155,7 @@ export class DashboardComponent implements OnInit {
     //ACTIVA LOADER
     this.loader();
     this.consultarDatos(form);
+    console.log(form)
   }
 
   consultarDatos(form: Object) {
