@@ -91,8 +91,8 @@ export class DashboardComponent implements OnInit {
   costoVariable: string = '-';
 
   //NG MODEL
-  selectedCodigoSpan: string = '-';
-  selectedDescripcionSpan: string = '-';
+  selectedCodigoSpan: string = '';
+  selectedDescripcionSpan: string = '';
 
 
   //FORM
@@ -124,10 +124,6 @@ export class DashboardComponent implements OnInit {
       this.codigo = res;
     });
   }
-
-  esCodigo(des: any, codigo: any) {
-    return des.codigo === codigo;
-}
 
   selectedCodigo(event: any) {
     let value = event.target.value;
