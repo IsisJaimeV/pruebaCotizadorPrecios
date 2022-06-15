@@ -126,7 +126,7 @@ export class DashboardComponent implements OnInit {
 
   selectedCodigo(event: any) {
     let value = event.target.value;
-    this.selectedCodigoSpan = value;
+    console.log(value);
   }
 
   selectZona() {
