@@ -16,7 +16,7 @@
                 <!-- <input type="text" formControlName="codigo"> -->
                 <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" style="width: 11vw;">
                 <datalist required id="filterCodigo">
-                    <option [value]="item.codigo" *ngFor="let item of codigo" (ngModelChange)="selectedDescripcionSpan = item">
+                    <option [value]="item.codigo" *ngFor="let item of codigo" >
                         {{item.codigo}} {{item.descripcion}}
                     </option>
                 </datalist>
@@ -34,7 +34,7 @@
                 <img src="../../../assets/icons/icon-precio.png" class="ms-4 icon-precio"> Precio propuesto <input type="number" formControlName="propuesto" id="precioPropuesto">
             </div>
             <div class="col">
-                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen"> <span> </span>
+                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen"> <span> {{selectedUMSpan}}</span>
             </div>
         </div>
         <div class="row">

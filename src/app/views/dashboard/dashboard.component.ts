@@ -93,6 +93,7 @@ export class DashboardComponent implements OnInit {
   //NG MODEL
   selectedCodigoSpan: string = '';
   selectedDescripcionSpan: string = '';
+  selectedUMSpan: string = '';
 
 
   //FORM
@@ -129,8 +130,10 @@ export class DashboardComponent implements OnInit {
     let value = event.target.value;
     this.selectedCodigoSpan = value;
 
-    var descipcion = this.codigo.find(resp => resp.codigo == value)
-    this.selectedDescripcionSpan = descipcion.descripcion;
+    var codigo = this.codigo.find(resp => resp.codigo == value)
+    this.selectedDescripcionSpan = codigo.descripcion;
+
+    this.selectedUMSpan = codigo.um;
   }
 
   selectZona() {
@@ -261,7 +264,13 @@ export class DashboardComponent implements OnInit {
         'La consulta no fue validada',
         'error'
       )
-      this.preciopisoGral = 0;
+       this.limpiarCampos();
+    })
+
+  }
+
+  limpiarCampos(){
+    this.preciopisoGral = 0;
       this.costoVta = 0;
       this.gastoCryo = 0;
       this.gastoDist = 0;
@@ -329,8 +338,6 @@ export class DashboardComponent implements OnInit {
       this.chartCostoVenta = 0;
       this.chartGastoCryogenico = 0;
       this.chartGastosVenta = 0;
-    })
-
   }
 
 }
