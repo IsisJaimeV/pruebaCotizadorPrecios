@@ -1,14 +1,24 @@
 /* Table */
 
+table tbody tr:nth-child(odd) {
+    background: #F6F6F6;
+}
+
+table tbody tr:nth-child(even) {
+    background: transparent;
+}
+
 table {
     font-family: Roboto-Light;
     font-size: 0.8em;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 9px;
+    -webkit-box-shadow: 42px 20px 17px -28px #000000;
+    box-shadow: 22px 20px 17px -32px #000000;
+    border-radius: 1em;
     span {
         margin-left: 10px;
     }
     .txtResaltado {
+        text-align: left;
         font-family: Roboto-Semibold;
         color: #1F3569;
     }
@@ -46,16 +56,6 @@ table {
     .color7 {
         background: #617E41;
     }
-    .gridTabla1 {
-        span {
-            margin-left: 55px;
-        }
-    }
-    .gridTabla2 {
-        span {
-            margin-right: 10px;
-        }
-    }
 }
 
 .containerTabla {
@@ -63,39 +63,82 @@ table {
     overflow-y: visible;
 }
 
+.separador {
+    border: 1px solid #FFF
+}
+
+.borderTopLeft {
+    border: 1px dashed #ACACA5;
+    border-bottom: 1px dashed transparent;
+    border-radius: 8px 8px 0 0;
+    padding: -1;
+}
+
+.borderTopRight {
+    border: 1px dashed #ACACA5;
+    border-bottom: 1px dashed transparent;
+    border-radius: 8px 8px 0 0;
+    padding: -1;
+}
+
+.borderBottomRight {
+    border: 1px dashed #ACACA5;
+    border-top: 1px dashed transparent;
+    border-radius: 0 0 8px 8px;
+    padding: -1;
+}
+
+.borderBottomLeft {
+    border: 1px dashed #ACACA5;
+    border-top: 1px dashed transparent;
+    border-radius: 0 0 8px 8px;
+    padding: -1;
+    margin-left: 15px;
+}
+
+.borderLateralIzq {
+    border-left: 1px dashed #ACACA5;
+}
+
+.borderInferiorIzq {
+    border-left: 1px dashed #ACACA5;
+    border-bottom: 1px dashed #ACACA5;
+    border-right: 1px dashed #ACACA5;
+}
+
+.borderInferiorDer {
+    border-right: 1px dashed #ACACA5;
+    border-bottom: 1px dashed #ACACA5;
+    border-right: 1px dashed #ACACA5;
+}
+
+.borderLateralDer {
+    border-right: 1px dashed #ACACA5;
+}
+
+.borderMedio {
+    border-right: 1px dashed #ACACA5;
+    border-left: 1px dashed #ACACA5;
+}
+
+.borderBottom {
+    border-right: 1px dashed #ACACA5;
+    border-left: 1px dashed #ACACA5;
+}
+
 
 /*Precio piso y precio propuesto*/
 
-.presioPiso {
-    width: 17vw;
-    height: 550px;
-    position: absolute;
-    right: 51vw;
-    border: 1px dashed #ACACA5;
-    border-radius: 8px;
-    text-align: center;
-    margin-top: -60px;
-    span {
-        font-family: Roboto-semibold;
-        font-size: 1em;
-        color: #5B9BD5;
-    }
+.spanPrecioPiso {
+    font-family: Roboto-semibold;
+    font-size: 1.2em;
+    color: #5B9BD5;
 }
 
-.presioPropuesto {
-    position: absolute;
-    width: 16vw;
-    height: 550px;
-    right: 35vw;
-    border: 1px dashed #ACACA5;
-    border-radius: 8px;
-    text-align: center;
-    margin-top: -60px;
-    span {
-        font-size: 1em;
-        font-family: Roboto-semibold;
-        color: #5B9BD5;
-    }
+.spanPrecioPropuesto {
+    font-size: 1.2em;
+    font-family: Roboto-semibold;
+    color: #5B9BD5;
 }
 
 
@@ -202,54 +245,12 @@ table {
         height: 550px;
         overflow-y: visible;
     }
-    .presioPiso {
-        width: 20vw;
-        height: 561px;
-        position: absolute;
-        right: 22vw;
-        span {
-            font-size: 13px;
-            margin-top: 20px !important;
-        }
-    }
-    .presioPropuesto {
-        position: absolute;
-        width: 18vw;
-        height: 561px;
-        right: 4vw;
-        span {
-            font-size: 13px;
-        }
-    }
     span {
         text-align: center;
     }
 }
 
-@media (max-width:420px) {
-    .presioPiso {
-        height: 485px;
-        width: 18vw !important;
-        right: 4vw !important;
-    }
-    .presioPropuesto {
-        height: 485px;
-        width: 18vw !important;
-        right: 22vw !important;
-    }
-}
-
 @media (max-width:540px) {
-    .presioPiso {
-        height: 530px;
-        width: 21vw !important;
-        right: 22vw !important;
-    }
-    .presioPropuesto {
-        height: 530px;
-        width: 16vw !important;
-        right: 4vw !important;
-    }
     .facturacion {
         width: 55%!important;
     }
@@ -310,43 +311,9 @@ table {
             font-size: 0.7em;
         }
     }
-    .presioPiso {
-        height: 476px !important;
-        width: 22vw !important;
-        right: 27vw !important;
-    }
-    .presioPropuesto {
-        height: 476px !important;
-        width: 22vw !important;
-        right: 5vw !important;
-    }
-    .gridTabla1 {
-        span {
-            margin-left: 70px !important;
-        }
-    }
-}
-
-@media (max-width:1280px) {
-    .presioPiso {
-        height: 575px !important;
-    }
-    .presioPropuesto {
-        height: 575px !important
-    }
 }
 
 @media (max-width:380px) {
-    .presioPiso {
-        height: 545px !important;
-        width: 21vw !important;
-        right: 23vw !important;
-    }
-    .presioPropuesto {
-        height: 545px !important;
-        width: 20vw !important;
-        right: 2vw !important;
-    }
     .facturacion {
         width: 55%!important;
     }
@@ -397,25 +364,7 @@ table {
     }
 }
 
-@media (max-width:400px) {
-    .presioPiso {
-        height: 530px;
-        width: 20vw !important;
-        right: 25vw !important;
-    }
-    .presioPropuesto {
-        height: 530px;
-        width: 20vw !important;
-    }
-}
-
 @media (max-width:370px) {
-    .presioPiso {
-        height: 562px !important;
-    }
-    .presioPropuesto {
-        height: 562px !important;
-    }
     .resultados {
         margin-top: 10px !important;
     }
@@ -424,33 +373,6 @@ table {
 @media (max-width:280px) {
     .containerTabla {
         height: 600px;
-    }
-    .presioPiso {
-        height: 676px !important;
-        width: 25vw !important;
-    }
-    .presioPropuesto {
-        height: 676px !important;
-        width: 25vw !important;
-        right: 29vw !important;
-    }
-}
-
-@media (max-width:768px) {
-    .presioPiso {
-        height: 476px !important;
-        width: 22vw !important;
-        right: 27vw !important;
-    }
-    .presioPropuesto {
-        height: 476px !important;
-        width: 22vw !important;
-        right: 5vw !important;
-    }
-    .gridTabla1 {
-        span {
-            margin-left: 70px !important;
-        }
     }
 }
 
@@ -472,21 +394,6 @@ table {
     .facturacion {
         width: 50% !important;
     }
-    .presioPiso {
-        height: 576px !important;
-        width: 22vw !important;
-        right: 20vw !important;
-    }
-    .presioPropuesto {
-        height: 576px !important;
-        width: 22vw !important;
-        right: -2vw !important;
-    }
-    .gridTabla1 {
-        span {
-            margin-left: 20px !important;
-        }
-    }
 }
 
 //filter
@@ -498,7 +405,7 @@ table {
         color: #575756;
         font-size: 1em !important;
         .col,
-        .col-md-3 {
+        .rightBorder {
             padding: 10px;
             border-bottom: 0.5px dashed #ACACA5;
             img {
@@ -542,7 +449,7 @@ table {
             }
         }
         .primeraColumna,
-        .col-md-3 {
+        .rightBorder {
             border-right: 0.5px dashed #ACACA5;
         }
     }

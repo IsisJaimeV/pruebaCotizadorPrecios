@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PrecioPisoDAOService } from 'src/app/services/DAO/precio-piso-dao.service';
-import { getDatosI } from 'src/app/models/getDatos.interface';
 import { NgxSpinnerService } from "ngx-spinner";
 import Swal from 'sweetalert2'
 
@@ -122,8 +121,12 @@ export class DashboardComponent implements OnInit {
 
   selectCodigo(event: any) {
     let value = event.target.value;
+    (document.getElementById("codigo") as HTMLSelectElement).disabled = true;
+    (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#c0c0c0";
     this.precioPiso.getCodigo(value).subscribe(res => {
       this.codigo = res;
+      (document.getElementById("codigo") as HTMLSelectElement).disabled = false;
+      (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#F2F2F2";
     });
 
     //Limpiar campos 
