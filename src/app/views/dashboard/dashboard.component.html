@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Linea:
-                <input formControlName="linea" (change)="selectCodigo($event)" list="filterLinea" name="filterLinea" placeholder="Selecciona una Linea" style="width: 11vw;">
+                <input formControlName="linea" (change)="selectCodigo($event)" list="filterLinea" name="filterLinea" placeholder="Selecciona una Linea" style="width: 11vw;" autocomplete="off">
                 <datalist id="filterLinea">
                     <option [value]="item.linea" *ngFor="let item of linea">
                         {{item.linea}} {{item.descripcion}}
@@ -14,7 +14,7 @@
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Código:
                 <!-- <input type="text" formControlName="codigo"> -->
-                <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" style="width: 11vw;" id="codigo">
+                <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" style="width: 11vw;" id="codigo" autocomplete="off">
                 <datalist required id="filterCodigo">
                     <option [value]="item.codigo" *ngFor="let item of codigo" >
                         {{item.codigo}} {{item.descripcion}}
@@ -23,7 +23,7 @@
             </div>
             <div class="col primeraColumna">
                 <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
-                <input formControlName="zona" list="filterZona" name="filterZona" placeholder="Selecciona una Zona" style="width: 11vw;" id="zona">
+                <input formControlName="zona" list="filterZona" name="filterZona" placeholder="Selecciona una Zona" style="width: 11vw;" id="zona" autocomplete="off">
                 <datalist required id="filterZona">
                     <option [value]="item.nombre" *ngFor="let item of zona">
                         {{item.area}} {{item.nombre}}
@@ -31,10 +31,10 @@
                 </datalist>
             </div>
             <div class="col">
-                <img src="../../../assets/icons/icon-precio.png" class="ms-4 icon-precio"> Precio propuesto <input type="number" formControlName="propuesto" id="precioPropuesto">
+                <img src="../../../assets/icons/icon-precio.png" class="ms-4 icon-precio"> Precio propuesto <input type="number" formControlName="propuesto" id="precioPropuesto" autocomplete="off">
             </div>
             <div class="col">
-                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen"> <span id="selectedUMSpan"> {{selectedUMSpan}}</span>
+                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen"> <span id="selectedUMSpan" autocomplete="off"> {{selectedUMSpan}}</span>
             </div>
         </div>
         <div class="row">
@@ -218,7 +218,7 @@
                         <div class="row division ">
                             <p class="mt-3 "> Utilidad operativa neta</p>
                         </div>
-                        <div class="row valor " id="utilidadNetaText ">
+                        <div class="row valor " id="utilidadNetaText">
                             <p><b>{{utilidadNeta}}</b></p>
                         </div>
                     </div>

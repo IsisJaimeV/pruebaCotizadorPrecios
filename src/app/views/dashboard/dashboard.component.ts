@@ -4,6 +4,7 @@ import { PrecioPisoDAOService } from 'src/app/services/DAO/precio-piso-dao.servi
 import { NgxSpinnerService } from "ngx-spinner";
 import Swal from 'sweetalert2'
 
+declare var $: any;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -122,11 +123,11 @@ export class DashboardComponent implements OnInit {
   selectCodigo(event: any) {
     let value = event.target.value;
     (document.getElementById("codigo") as HTMLSelectElement).disabled = true;
-     (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#c0c0c0";
+    (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#c0c0c0";
     this.precioPiso.getCodigo(value).subscribe(res => {
       this.codigo = res;
       (document.getElementById("codigo") as HTMLSelectElement).disabled = false;
-       (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#F2F2F2";
+      (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#F2F2F2";
     });
 
     //Limpiar campos 
@@ -214,10 +215,10 @@ export class DashboardComponent implements OnInit {
       const utilidad = this.pputilidadOperativaNeta;
       if (utilidad >= 0) {
         this.utilidadNeta = 'Positiva "Creación de Valor"';
-        // (document.getElementById('utilidadNetaText') as HTMLDivElement).style.color = "green";
+        $('#utilidadNetaText').css('color', 'green');
       } else {
         this.utilidadNeta = 'Negativa "Destrucción de Valor"';
-        // (document.getElementById('utilidadNetaText') as HTMLDivElement).style.color = "red";
+        $('#utilidadNetaText').css('color', 'red');
       }
 
       //GAUGE CHART
@@ -253,7 +254,6 @@ export class DashboardComponent implements OnInit {
       this.ppporgastoAdm = res.resultado.porcentajePropuesto.gastoAdm.toFixed(1);
       this.ppporutilidadOperativaNeta = res.resultado.porcentajePropuesto.utilidadOperativaNeta.toFixed(1);
 
-      console.log(res.resultado.totales)
       // TOTALES PRECIO PISO
       this.tpfacturacionAnual = res.resultado.totales.facturacionAnual;
       this.tputilidadOperativaNeta = res.resultado.totales.utilidadOperativaNeta;
@@ -270,9 +270,9 @@ export class DashboardComponent implements OnInit {
       this.difPrePropuestoVSPrePiso = res.resultado.graficaDto.precioPropuestoVPiso.toFixed(2);
 
       if (this.difPrePropuestoVSPrePiso >= 0) {
-        // (document.getElementById('difPrePropuestoVSPrePiso') as HTMLDivElement).style.color = "green";
+        $('#difPrePropuestoVSPrePiso').css('color', 'green');
       } else {
-        // (document.getElementById('difPrePropuestoVSPrePiso') as HTMLDivElement).style.color = "red";
+        $('#difPrePropuestoVSPrePiso').css('color', 'red');
       }
 
     }, (errorServicio) => {
