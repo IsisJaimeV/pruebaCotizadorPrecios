@@ -99,11 +99,11 @@ export class DashboardComponent implements OnInit {
 
   //FORM
   filterForm = new FormGroup({
-    linea: new FormControl('', [Validators.required]),
-    codigo: new FormControl('', [Validators.required]),
-    zona: new FormControl('', [Validators.required]),
+    linea: new FormControl('', Validators.required),
+    codigo: new FormControl('', Validators.required),
+    zona: new FormControl('', Validators.required),
     propuesto: new FormControl(''),
-    volumen: new FormControl('', [Validators.required]),
+    volumen: new FormControl('', Validators.required),
     tipoOperacion: new FormControl(false),
   })
   mymodel: any;
@@ -182,29 +182,12 @@ export class DashboardComponent implements OnInit {
     }else{
       (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
     }
-
-    var volumen = (document.getElementById("volumen") as HTMLInputElement).value = "";
-    if(volumen == ""){
-      (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
-    }else{
-      (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
-    }
   }
 
 
   valuechange(newValue: any) {
-    $("#volumen").keydown(function(e:any) {
-      setTimeout(function () {
-        if(newValue == "" || newValue == null){
-          (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
-        }else{
-          (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
-        } 
-      }, 1);
-  });
 
-    var zona = (document.getElementById("zona") as HTMLInputElement).value = "";
-    if(zona == "" ){
+    if(newValue == "" || newValue == null){
       (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
     }else{
       (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
@@ -222,7 +205,6 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       this.spinner.hide();
     }, 2000);
-    
   }
 
   loaderCheckbox(form: Object) {
