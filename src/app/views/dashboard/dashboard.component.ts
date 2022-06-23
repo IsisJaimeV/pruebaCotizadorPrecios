@@ -212,7 +212,6 @@ export class DashboardComponent implements OnInit {
   consultarDatos(form: Object) {
     this.precioPiso.getDatos(form).subscribe(res => {
 
-     
       // COSTO PRECIO PISO
       this.preciopisoGral = res.resultado.info.precioPiso.toFixed(2);
       this.costoVta = res.resultado.info.costoVta.toFixed(2);
@@ -311,7 +310,13 @@ export class DashboardComponent implements OnInit {
       }
 
     }, (error) =>{
-      console.log(error)
+
+      Swal.fire(
+        '',
+        error.error.resultado,
+        'error'
+      )
+      console.log(error.error.codigo)
     })
 
   }

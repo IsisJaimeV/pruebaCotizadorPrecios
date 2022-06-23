@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { getDatosI } from 'src/app/models/getDatos.interface';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable} from 'rxjs/internal/Observable';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +18,7 @@ export class PrecioPisoDAOService {
         return this.http.get(environment.endp_linea, { 'headers': headers })
     }
 
-    getCodigo(linea:any): Observable<any> {
+    getCodigo(linea: any): Observable<any> {
         const headers = {
             'Ocp-Apim-Subscription-Key': 'd788385e2e7349388f922cd2158dbf7c'
         }
@@ -35,16 +33,16 @@ export class PrecioPisoDAOService {
     }
 
 
-    eliminarVacios(json: any){
-        for (var clave in json) { 
-            if(typeof json[clave] == 'string'){ 
-              if(json[clave] == 'Vacío'||json[clave] == ''){
-                delete json[clave] 
-              }
-            } else if (typeof json[clave] == 'object') { 
-              this.eliminarVacios(json[clave]) 
+    eliminarVacios(json: any) {
+        for (var clave in json) {
+            if (typeof json[clave] == 'string') {
+                if (json[clave] == 'Vacío' || json[clave] == '') {
+                    delete json[clave]
+                }
+            } else if (typeof json[clave] == 'object') {
+                this.eliminarVacios(json[clave])
             }
-           }
+        }
     }
 
     getDatos(form: Object): Observable<any> {
@@ -58,6 +56,11 @@ export class PrecioPisoDAOService {
 
         this.eliminarVacios(json);
 
-        return this.http.post(environment.endp_precioPiso, json, { 'headers': headers })
+        return this.http.post(environment.endp_precioPiso, json, { 'headers': headers });
+          
     }
+
+
 }
+
+
