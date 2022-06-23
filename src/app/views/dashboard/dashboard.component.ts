@@ -163,12 +163,12 @@ export class DashboardComponent implements OnInit {
 
   selectedCodigo(event: any) {
     let value = event.target.value;
+    this.selectedCodigoSpan = value;
 
     var codigo = this.codigo.find(resp => resp.codigo == value)
     this.selectedDescripcionSpan = codigo.descripcion;
 
     this.selectedUMSpan = codigo.um;
-    this.selectedCodigoSpan = value;
   }
 
   selectZona() {
@@ -192,11 +192,6 @@ export class DashboardComponent implements OnInit {
     }else{
       (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
     }
-  }
-
-  borradoSpanCodigo(event : any){
-    this.selectedCodigoSpan = "";
-    this.selectedDescripcionSpan = "";
   }
 
   loader() {
