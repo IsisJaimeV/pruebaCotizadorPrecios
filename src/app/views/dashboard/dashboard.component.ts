@@ -138,7 +138,7 @@ export class DashboardComponent implements OnInit {
       this.codigo = res;
       (document.getElementById("codigo") as HTMLSelectElement).disabled = false;
       (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#F2F2F2";
-    });
+    }, (err) =>{});
 
     //Limpiar campos 
      var codigo = (document.getElementById("codigo") as HTMLInputElement).value = "";
@@ -212,14 +212,7 @@ export class DashboardComponent implements OnInit {
   consultarDatos(form: Object) {
     this.precioPiso.getDatos(form).subscribe(res => {
 
-      if(res.codigo == 404){
-        Swal.fire(
-          'Intenta nuevamente',
-          res.resultado,
-          'error'
-        )
-        this.limpiarCampos();
-      }else{
+     
       // COSTO PRECIO PISO
       this.preciopisoGral = res.resultado.info.precioPiso.toFixed(2);
       this.costoVta = res.resultado.info.costoVta.toFixed(2);
@@ -316,8 +309,9 @@ export class DashboardComponent implements OnInit {
       } else {
         $('#difPrePropuestoVSPrePiso').css('color', 'red');
       }
-    }
 
+    }, (error) =>{
+      console.log(error)
     })
 
   }
