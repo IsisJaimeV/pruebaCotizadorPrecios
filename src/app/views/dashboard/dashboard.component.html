@@ -1,10 +1,10 @@
 <app-header></app-header>
 <div class="container-fluid">
-    <form [formGroup]="filterForm" (ngSubmit)="consultarDatos(filterForm.value)">
+    <form [formGroup]="filterForm!" (ngSubmit)="consultarDatos(filterForm.value)">
         <div class="row">
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Linea:
-                <input formControlName="linea" (change)="selectCodigo($event)" list="filterLinea" name="filterLinea" placeholder="Selecciona una Linea" style="width: 11vw;" autocomplete="off">
+                <input formControlName="linea" (ngModelChange)="selectCodigo($event)" [ngModel]="mymodel2" list="filterLinea" name="filterLinea" placeholder="Selecciona una Linea" style="width: 11vw;" autocomplete="off" id="linea" required>
                 <datalist id="filterLinea">
                     <option [value]="item.linea" *ngFor="let item of linea">
                         {{item.linea}} {{item.descripcion}}
@@ -14,7 +14,7 @@
             <div class="col">
                 <img src="../../../assets/icons/icon-codigo.png" class="ms-3 icon"> Código:
                 <!-- <input type="text" formControlName="codigo"> -->
-                <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" style="width: 11vw;" id="codigo" autocomplete="off">
+                <input formControlName="codigo" (change)="selectedCodigo($event)" list="filterCodigo" name="filterCodigo" placeholder="Selecciona un código" style="width: 11vw;" id="codigo" autocomplete="off" id="codigo" required>
                 <datalist required id="filterCodigo">
                     <option [value]="item.codigo" *ngFor="let item of codigo" >
                         {{item.codigo}} {{item.descripcion}}
@@ -23,7 +23,7 @@
             </div>
             <div class="col primeraColumna">
                 <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
-                <input formControlName="zona" list="filterZona" name="filterZona" placeholder="Selecciona una Zona" style="width: 11vw;" id="zona" autocomplete="off">
+                <input formControlName="zona" list="filterZona" name="filterZona" placeholder="Selecciona una Zona" style="width: 11vw;" id="zona" autocomplete="off" id="zona" required>
                 <datalist required id="filterZona">
                     <option [value]="item.nombre" *ngFor="let item of zona">
                         {{item.area}} {{item.nombre}}
@@ -34,7 +34,7 @@
                 <img src="../../../assets/icons/icon-precio.png" class="ms-4 icon-precio"> Precio propuesto <input type="number" formControlName="propuesto" id="precioPropuesto" autocomplete="off">
             </div>
             <div class="col">
-                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen"> <span id="selectedUMSpan" autocomplete="off"> {{selectedUMSpan}}</span>
+                <img src="../../../assets/icons/icon-volumen.png" class="icon"> Volumen <input type="number" formControlName="volumen" required id="volumen" id="volumen" [ngModel]="mymodel" (ngModelChange)="valuechange($event)"> <span id="selectedUMSpan"> {{selectedUMSpan}}</span>
             </div>
         </div>
         <div class="row">
@@ -51,7 +51,7 @@
                 <span style="font-size: 0.8em;" id="codigoSpan">{{selectedCodigoSpan}} {{selectedDescripcionSpan}}</span>
             </div>
             <div class="col col-btnSimulacion">
-                <button class="btn btn-primary simulacion me-4" type="submit" (click)="loader()" [disabled]="!filterForm.valid"><img src="../../../assets/icons/icon-ejecutar.png"><b>
+                <button class="btn btn-primary simulacion me-4" id="simulacion" type="submit" (click)="loader()" [disabled]="!filterForm.valid"><img src="../../../assets/icons/icon-ejecutar.png"><b>
                         Ejecutar</b> simulación </button>
             </div>
         </div>

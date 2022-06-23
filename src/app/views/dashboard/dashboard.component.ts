@@ -102,10 +102,12 @@ export class DashboardComponent implements OnInit {
     linea: new FormControl('', Validators.required),
     codigo: new FormControl('', Validators.required),
     zona: new FormControl('', Validators.required),
-    propuesto: new FormControl('', Validators.nullValidator),
+    propuesto: new FormControl(''),
     volumen: new FormControl('', Validators.required),
     tipoOperacion: new FormControl(false),
   })
+  mymodel: any;
+  mymodel2: any;
 
   constructor(private precioPiso: PrecioPisoDAOService, private spinner: NgxSpinnerService) { }
 
@@ -117,11 +119,19 @@ export class DashboardComponent implements OnInit {
   selectLinea() {
     this.precioPiso.getLinea().subscribe(res => {
       this.linea = res;
+    }, (errorServicio) => {
     });
+
+    var linea = (document.getElementById("linea") as HTMLInputElement).value = "";
+    if(linea == ""){
+      (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
+    }else{
+      (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
+    }
   }
 
   selectCodigo(event: any) {
-    let value = event.target.value;
+    let value = event;
     (document.getElementById("codigo") as HTMLSelectElement).disabled = true;
     (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#c0c0c0";
     this.precioPiso.getCodigo(value).subscribe(res => {
@@ -131,17 +141,24 @@ export class DashboardComponent implements OnInit {
     });
 
     //Limpiar campos 
-    (document.getElementById("codigo") as HTMLInputElement).value = "";
-    (document.getElementById("zona") as HTMLInputElement).value = "";
+     var codigo = (document.getElementById("codigo") as HTMLInputElement).value = "";
+   (document.getElementById("zona") as HTMLInputElement).value = "";
     (document.getElementById("precioPropuesto") as HTMLInputElement).value = "";
     (document.getElementById("volumen") as HTMLInputElement).value = "";
     (document.getElementById('cryoinfra') as HTMLInputElement).checked = false;
+
+    if(codigo == ""){
+    (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
+  }else{
+    (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
+  }
 
     this.selectedUMSpan = "";
     this.selectedCodigoSpan = "";
     this.selectedDescripcionSpan = "";
 
     this.limpiarCampos();
+
   }
 
   selectedCodigo(event: any) {
@@ -158,6 +175,23 @@ export class DashboardComponent implements OnInit {
     this.precioPiso.getZona().subscribe(res => {
       this.zona = res;
     });
+
+    var zona = (document.getElementById("zona") as HTMLInputElement).value = "";
+    if(zona == ""){
+      (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
+    }else{
+      (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
+    }
+  }
+
+
+  valuechange(newValue: any) {
+
+    if(newValue == "" || newValue == null){
+      (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
+    }else{
+      (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
+    }
   }
 
   loader() {
@@ -178,6 +212,14 @@ export class DashboardComponent implements OnInit {
   consultarDatos(form: Object) {
     this.precioPiso.getDatos(form).subscribe(res => {
 
+      if(res.codigo == 404){
+        Swal.fire(
+          'Intenta nuevamente',
+          res.resultado,
+          'error'
+        )
+        this.limpiarCampos();
+      }else{
       // COSTO PRECIO PISO
       this.preciopisoGral = res.resultado.info.precioPiso.toFixed(2);
       this.costoVta = res.resultado.info.costoVta.toFixed(2);
@@ -274,15 +316,8 @@ export class DashboardComponent implements OnInit {
       } else {
         $('#difPrePropuestoVSPrePiso').css('color', 'red');
       }
+    }
 
-    }, (errorServicio) => {
-      console.log(errorServicio);
-      Swal.fire(
-        'Intenta nuevamente',
-        'La consulta no fue validada',
-        'error'
-      )
-      this.limpiarCampos();
     })
 
   }
