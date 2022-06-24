@@ -172,20 +172,21 @@ export class DashboardComponent implements OnInit {
 
   selectedCodigo(event: any) {
     let value = event.target.value;
-    
+
     var codigo = this.codigo.find(resp => resp.codigo == value)
-    this.selectedDescripcionSpan = codigo.descripcion;
-
-    
-    this.selectedUMSpan = codigo.um;
-    this.selectedCodigoSpan = value;
-
+    try {
+      this.selectedDescripcionSpan = codigo.descripcion; 
+      this.selectedUMSpan = codigo.um;
+      this.selectedCodigoSpan = value;
+    } catch { }
     this.validaVacios()
   }
 
-  borradoSpanCodigo(event : any){
-    this.selectedCodigoSpan = "";
+  borradoSpanCodigo(event: any) {
+    if(event.key != undefined){
+      this.selectedCodigoSpan = "";
     this.selectedDescripcionSpan = "";
+    }
   }
 
   selectZona() {
