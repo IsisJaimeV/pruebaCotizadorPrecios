@@ -23,7 +23,7 @@
             </div>
             <div class="col primeraColumna">
                 <img src="../../../assets/icons/icon-zona.png" class="icon"> Zona:
-                <input formControlName="zona" list="filterZona" name="filterZona" placeholder="Selecciona una Zona" style="width: 11vw;" id="zona" autocomplete="off" id="zona" required>
+                <input formControlName="zona" list="filterZona" name="filterZona" placeholder="Selecciona una Zona" style="width: 11vw;" id="zona" autocomplete="off" id="zona" required (change)="validaZona($event)">
                 <datalist required id="filterZona">
                     <option [value]="item.nombre" *ngFor="let item of zona">
                         {{item.area}} {{item.nombre}}
@@ -232,7 +232,7 @@
                         <div class="row division ">
                             <p class="mt-3 ">Diferencia en utilidad precio propuesto vs. utilidad precio piso</p><span style="font-family: Roboto-Semibold; color: #8a8987; margin-top: -10px; ">anual</span>
                         </div>
-                        <div class="row valor " id="difPrePropuestoVSPrePiso ">
+                        <div class="row valor " id="difPrePropuestoVSPrePiso">
                             <p>$ {{difPrePropuestoVSPrePiso | number}}</p>
                         </div>
                     </div>

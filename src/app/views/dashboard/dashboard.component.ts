@@ -116,18 +116,30 @@ export class DashboardComponent implements OnInit {
     this.selectZona();
   }
 
+  validaVacios() {
+    var linea = (document.getElementById("linea") as HTMLInputElement).value.length;
+    var codigo = (document.getElementById("codigo") as HTMLInputElement).value.length;
+    var volumen = (document.getElementById("volumen") as HTMLInputElement).value.length;
+    var zona = (document.getElementById("zona") as HTMLInputElement).value.length;
+
+    if (linea != 0 && codigo != 0 && volumen != 0 && zona != 0) {
+      (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
+    } else {
+      (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
+    }
+  }
+
   selectLinea() {
     this.precioPiso.getLinea().subscribe(res => {
       this.linea = res;
     }, (errorServicio) => {
     });
 
-    var linea = (document.getElementById("linea") as HTMLInputElement).value = "";
-    if(linea == ""){
-      (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
-    }else{
-      (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
-    }
+    (document.getElementById("linea") as HTMLInputElement).value = "";
+    (document.getElementById("codigo") as HTMLInputElement).value = "";
+    (document.getElementById("volumen") as HTMLInputElement).value = "";
+    (document.getElementById("zona") as HTMLInputElement).value = "";
+    this.validaVacios();
   }
 
   selectCodigo(event: any) {
@@ -138,25 +150,21 @@ export class DashboardComponent implements OnInit {
       this.codigo = res;
       (document.getElementById("codigo") as HTMLSelectElement).disabled = false;
       (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#F2F2F2";
-    }, (err) =>{});
+    }, (err) => { });
 
     //Limpiar campos 
-     var codigo = (document.getElementById("codigo") as HTMLInputElement).value = "";
-   (document.getElementById("zona") as HTMLInputElement).value = "";
+    (document.getElementById("codigo") as HTMLInputElement).value = "";
+    (document.getElementById("zona") as HTMLInputElement).value = "";
     (document.getElementById("precioPropuesto") as HTMLInputElement).value = "";
     (document.getElementById("volumen") as HTMLInputElement).value = "";
     (document.getElementById('cryoinfra') as HTMLInputElement).checked = false;
-
-    if(codigo == ""){
-    (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
-  }else{
-    (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
-  }
+    (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;;
 
     this.selectedUMSpan = "";
     this.selectedCodigoSpan = "";
     this.selectedDescripcionSpan = "";
 
+    this.validaVacios();
     this.limpiarCampos();
 
   }
@@ -168,6 +176,7 @@ export class DashboardComponent implements OnInit {
     var codigo = this.codigo.find(resp => resp.codigo == value)
     this.selectedDescripcionSpan = codigo.descripcion;
 
+    this.validaVacios()
     this.selectedUMSpan = codigo.um;
   }
 
@@ -176,22 +185,16 @@ export class DashboardComponent implements OnInit {
       this.zona = res;
     });
 
-    var zona = (document.getElementById("zona") as HTMLInputElement).value = "";
-    if(zona == ""){
-      (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
-    }else{
-      (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
-    }
+    this.validaVacios();
+  }
+
+  validaZona(e: any) {
+    this.validaVacios();
   }
 
 
   valuechange(newValue: any) {
-
-    if(newValue == "" || newValue == null){
-      (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
-    }else{
-      (document.getElementById('simulacion') as HTMLButtonElement).disabled = false;
-    }
+    this.validaVacios();
   }
 
   loader() {
@@ -309,7 +312,7 @@ export class DashboardComponent implements OnInit {
         $('#difPrePropuestoVSPrePiso').css('color', 'red');
       }
 
-    }, (error) =>{
+    }, (error) => {
 
       Swal.fire(
         '',
