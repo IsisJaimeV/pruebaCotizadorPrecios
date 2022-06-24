@@ -127,6 +127,7 @@ export class DashboardComponent implements OnInit {
     } else {
       (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
     }
+    //prueba
   }
 
   selectLinea() {
