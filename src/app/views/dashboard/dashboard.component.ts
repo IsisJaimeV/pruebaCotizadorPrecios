@@ -117,6 +117,8 @@ export class DashboardComponent implements OnInit {
   }
 
   validaVacios() {
+    (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
+
     var linea = (document.getElementById("linea") as HTMLInputElement).value.length;
     var codigo = (document.getElementById("codigo") as HTMLInputElement).value.length;
     var volumen = (document.getElementById("volumen") as HTMLInputElement).value.length;
@@ -127,7 +129,6 @@ export class DashboardComponent implements OnInit {
     } else {
       (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
     }
-    //prueba
   }
 
   selectLinea() {
@@ -159,7 +160,6 @@ export class DashboardComponent implements OnInit {
     (document.getElementById("precioPropuesto") as HTMLInputElement).value = "";
     (document.getElementById("volumen") as HTMLInputElement).value = "";
     (document.getElementById('cryoinfra') as HTMLInputElement).checked = false;
-    (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;;
 
     this.selectedUMSpan = "";
     this.selectedCodigoSpan = "";
@@ -172,13 +172,20 @@ export class DashboardComponent implements OnInit {
 
   selectedCodigo(event: any) {
     let value = event.target.value;
-    this.selectedCodigoSpan = value;
-
+    
     var codigo = this.codigo.find(resp => resp.codigo == value)
     this.selectedDescripcionSpan = codigo.descripcion;
 
-    this.validaVacios()
+    
     this.selectedUMSpan = codigo.um;
+    this.selectedCodigoSpan = value;
+
+    this.validaVacios()
+  }
+
+  borradoSpanCodigo(event : any){
+    this.selectedCodigoSpan = "";
+    this.selectedDescripcionSpan = "";
   }
 
   selectZona() {
