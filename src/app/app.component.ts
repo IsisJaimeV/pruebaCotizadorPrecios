@@ -10,27 +10,27 @@ import { AuthenticationResult } from '@azure/msal-browser';
 export class AppComponent {
   title = 'analiticaPrecios';
 
-  constructor(private MsalService: MsalService){}
+  constructor(){}
 
-  ngOnInit(): void{
-    this.MsalService.instance.handleRedirectPromise().then(
-      res => {
-        if ( res != null && res.account != null){
-          this.MsalService.instance.setActiveAccount(res.account)
-        }
-      }
-    )
-   // this.login();
-  }
-  isLoggedIn(): boolean {
-    return this.MsalService.instance.getActiveAccount() != null
-  }
+  // ngOnInit(): void{
+  //   this.MsalService.instance.handleRedirectPromise().then(
+  //     res => {
+  //       if ( res != null && res.account != null){
+  //         this.MsalService.instance.setActiveAccount(res.account)
+  //       }
+  //     }
+  //   )
+  //  // this.login();
+  // }
+  // isLoggedIn(): boolean {
+  //   return this.MsalService.instance.getActiveAccount() != null
+  // }
 
-  login(){
-   this.MsalService.loginRedirect();
-  }
+  // login(){
+  //  this.MsalService.loginRedirect();
+  // }
 
-  logout(){
-    this.MsalService.logout();
-  }
+  // logout(){
+  //   this.MsalService.logout();
+  // }
 }

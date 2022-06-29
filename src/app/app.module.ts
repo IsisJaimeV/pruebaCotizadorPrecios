@@ -15,14 +15,14 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { MsalModule, MsalService, MSAL_INSTANCE } from '@azure/msal-angular';
 import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 
-export function MSALInstanceFactory(): IPublicClientApplication {
-  return new PublicClientApplication({
-    auth: {
-      clientId: "ae5abf5f-cee6-4b5c-8368-d9691ddbae2b",
-      redirectUri: "http://localhost:4200",
-    }
-  })
-}
+// export function MSALInstanceFactory(): IPublicClientApplication {
+//   return new PublicClientApplication({
+//     auth: {
+//       clientId: "ae5abf5f-cee6-4b5c-8368-d9691ddbae2b",
+//       redirectUri: "http://localhost:4200",
+//     }
+//   })
+// }
 
 @NgModule({
   declarations: [
@@ -43,10 +43,10 @@ export function MSALInstanceFactory(): IPublicClientApplication {
     MsalModule
   ],
   providers: [
-    {
-      provide: MSAL_INSTANCE,
-      useFactory: MSALInstanceFactory
-    },
+    // {
+    //   provide: MSAL_INSTANCE,
+    //   useFactory: MSALInstanceFactory
+    // },
     MsalService
   ], 
   bootstrap: [AppComponent]
