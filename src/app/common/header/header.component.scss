@@ -51,3 +51,14 @@
         }
     }
 }
+
+@media (max-width:400px) {
+    .img-logo {
+        width: 20%;
+    }
+    .navbar-brand {
+        p {
+            display: none;
+        }
+    }
+}

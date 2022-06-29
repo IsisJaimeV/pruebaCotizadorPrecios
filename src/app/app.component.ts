@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MsalService } from '@azure/msal-angular';
+import { AuthenticationResult } from '@azure/msal-browser';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'analiticaPrecios';
+
+  constructor(private MsalService: MsalService){}
+
+  ngOnInit(): void{
+    this.MsalService.instance.handleRedirectPromise().then(
+      res => {
+        if ( res != null && res.account != null){
+          this.MsalService.instance.setActiveAccount(res.account)
+        }
+      }
+    )
+   // this.login();
+  }
+  isLoggedIn(): boolean {
+    return this.MsalService.instance.getActiveAccount() != null
+  }
+
+  login(){
+   this.MsalService.loginRedirect();
+  }
+
+  logout(){
+    this.MsalService.logout();
+  }
 }

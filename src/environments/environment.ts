@@ -7,6 +7,7 @@ export const environment = {
   production: true,
   env: 'dev',
   ambiente: 'dev',
+  endp_auth: 'https://infralink.azure-api.net/api/Login',
   endp_precioPiso: 'https://infralink.azure-api.net/api/AnalisisPrecioInfra',
   endp_linea: 'https://infralink.azure-api.net/api/linea',
   endp_zona: 'https://infralink.azure-api.net/api/zona',

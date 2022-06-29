@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PrecioPisoDAOService } from 'src/app/services/DAO/precio-piso-dao.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import Swal from 'sweetalert2'
+import {Router} from '@angular/router';
 
 declare var $: any;
 @Component({
@@ -109,12 +110,46 @@ export class DashboardComponent implements OnInit {
   mymodel: any;
   mymodel2: any;
 
-  constructor(private precioPiso: PrecioPisoDAOService, private spinner: NgxSpinnerService) { }
+  constructor(private precioPiso: PrecioPisoDAOService, private spinner: NgxSpinnerService, private router:Router) { }
 
   ngOnInit(): void {
     this.selectLinea();
     this.selectZona();
   }
+
+  authUser() {
+    // var pathCadena = "https://webpreciopiso.azurewebsites.net/?correo=GatLH7gvt6VIQyXU0C/Dy/yJU0ApN0b/qvUodT7P1zjLaJcTW4uMmND5jyW/9o6+CoVRAvFsF1rOfdVCwI6Yf3LN1O9qCUNdb+vYSFLf4h+z9fVaM+x0NtQHhaqyNke6wWWEtTI7goNC82T+8zMt/RKF8G3O758jotUgLiAOTpKyMGxHVK+fNi6IeZdkSz1BxYgz9y6mSs2j7eEKaXoZc+O8HY5M7EzeGurR/A33OdPAlOuOPMhY7jNfavB/SdzccnQHpcuJ1knAhczm8zT+1jIUc6c5bRhWjtUKmJlSs33XBGgumb5HQEJGUlaFUNEBWzeoDPGhxPd0JG7bAxweJDfi0O8D+zYGvBP2t1f9oSuPM/HyUFLCNkYDFkZbNzqz30iyYNpkhPdpcXtkd5FV/DnsGshY07NfGUc+QkhYv5zP3iDo1ROvaFXiDtqvw/2oQo7asGAh0H/NRhFs4CX5/HowQRqcXRJLYDe7A7M49efFMqLkXGsyuvfOxcjkABbdJaF9oOGQ8KHc7uwuaFtB0A8U/DFvHJ0Ry+DQu2Lw8IwSKj+L3dVJXQlQdSQ6S80oKf2Q/uSKBCgXeUsBToo9LWId/f8+XOsBP4VxSdMh1f3qYKf6k26F0LdpsviYFPbCPOOD+UGIT7gZJR+h37zJKctWbRinoWFCJPP+tmCzIMKae0Z+pnnG0+0DTx3DBC1HCyUY/02YxvgluW2wjXcujYagAkMr/TJGZbed0W7Ppq+xPgGBGO1QK75xn1hW/HAfsouVuF5zsjUhQjbx9T5qXwd3mtc+UfumFJActF1zbvt5v3apqgJHV8CVosa39/uFBWMnuEIoS8c7zKga9aErXjLcBwTyFz/aeXkYRhA7hPKkZq81wLw3IOz4o0+jot22b9vOOKDDhX4RzucnWW3jHUKRxyniP/lWSnpFRJFwlQh/wTQjsjlq+nT7VKEvkiTVgMdLcZvTQJEqZ41gXGLGCe5GRrp9vAFXFIyIRaa18WgqSGBHV161svml71WqcDOlgBiwjPmNj9t02CvGDTlX3e1ij34gvrIOllVqS7q/9l7z2xRksUomLmBI6HPR2ooteWnbJKtuAGtOCSFcS4SW62GrLrBmjZhqz6XwOcFMrV9TmcOFUIkg119+bew9b0+jia7jLvvc7QbRrLy8U30WAmm+gSQmeUdKZvRN5yA5ED8Yfd0QHtDWha2xDt21oIa9dh78KSqdqwDfEi0ylpL1trjvPJkwndokkCG206yX14CS7wb5xVyq8bOarIRKa3J7W26HLbJzhTOcCzlsivKrCXJffBxrk7+Q0gyL/4t69mFf55MAtFWOy7Unwsw3rjtvdMZAHryq6RX419ZqZaJBsfBRJNZIzaA3Y27bx0Yg/jB+HGeIJccQ0bQL/vVkc7BV8gzw8OFjrCudzrSYyMajKNhkDop9H+4G64QW4tTkzDflPCsP2ldSLn2Au54TO7WgowDZUwh4R+u/UVUEI3PGoFHXl8EJPyPhnIyzcO+5734zrDT3Qp6xlxdQkNoH+bFoap1VnCSbpgnUwiQasZ2gBrhekjCRi+LIo7xS8vf3GNJlgWpliAyy59p2WmNdeM7LuLJX/7/2+veL+thNpMLfw59G+sROJzp4Ocqfm9DOPD9TotSKAFK3Oc+YGASPJuZpap9GHRtcC/uLEQ+kK7D3QTAJeyalNJA9VJri+ex/WJc="+
+    // "&token=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImluZm9TdXBlckFkbWluIiwibm9tYnJlIjoiQWxlamFuZHJvIiwibmJmIjoxNjU2NTIyMjIzLCJleHAiOjE2NTY2MDg2MjMsImlhdCI6MTY1NjUyMjIyM30.DPoqcBCDBB72upEoEmoaxsWezOCFlQtgCLsSMFq1CYvpdqPWtizXwBSawWwjxeLbTEzH1tn_VxmZwoxiLiTzWg";
+    var path = window.location.pathname;
+    console.log(path)
+
+    var correoTemp = path.split('?correo=')[1];
+
+    var correo = correoTemp.split('&token=')[0]
+    var token = path.split('&token=')[1];
+
+    var pathJSON = {
+      email: correo,
+      token: token,
+      sourceId: 1
+    }
+    var user = correo;
+
+    console.log(pathJSON)
+
+    // this.precioPiso.getAuth(pathJSON).subscribe(res => {
+    //   if(res.resultado == true){
+    //     // this.router.navigate(['dashboard']);
+    //   }else{
+    //     // this.router.navigate(['not-found']);
+    //   }
+    // },(error) =>{
+    //     // this.router.navigate(['not-found']);
+    // })
+
+    return user;
+  }
+
 
   validaVacios() {
     (document.getElementById('simulacion') as HTMLButtonElement).disabled = true;
@@ -148,11 +183,13 @@ export class DashboardComponent implements OnInit {
     let value = event;
     (document.getElementById("codigo") as HTMLSelectElement).disabled = true;
     (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#c0c0c0";
-    this.precioPiso.getCodigo(value).subscribe(res => {
-      this.codigo = res;
-      (document.getElementById("codigo") as HTMLSelectElement).disabled = false;
-      (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#F2F2F2";
-    }, (err) => { });
+    try {
+      this.precioPiso.getCodigo(value).subscribe(res => {
+        this.codigo = res;
+        (document.getElementById("codigo") as HTMLSelectElement).disabled = false;
+        (document.getElementById("codigo") as HTMLSelectElement).style.backgroundColor = "#F2F2F2";
+      }, (err) => { });
+    } catch { }
 
     //Limpiar campos 
     (document.getElementById("codigo") as HTMLInputElement).value = "";
@@ -175,7 +212,7 @@ export class DashboardComponent implements OnInit {
 
     var codigo = this.codigo.find(resp => resp.codigo == value)
     try {
-      this.selectedDescripcionSpan = codigo.descripcion; 
+      this.selectedDescripcionSpan = codigo.descripcion;
       this.selectedUMSpan = codigo.um;
       this.selectedCodigoSpan = value;
     } catch { }
@@ -183,9 +220,9 @@ export class DashboardComponent implements OnInit {
   }
 
   borradoSpanCodigo(event: any) {
-    if(event.key != undefined){
+    if (event.key != undefined) {
       this.selectedCodigoSpan = "";
-    this.selectedDescripcionSpan = "";
+      this.selectedDescripcionSpan = "";
     }
   }
 

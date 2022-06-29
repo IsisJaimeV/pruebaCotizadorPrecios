@@ -11,6 +11,22 @@ export class PrecioPisoDAOService {
 
     constructor(private http: HttpClient) { }
 
+    getAuth(path: Object): Observable<any> {
+        console.log(path)
+        var body = JSON.stringify(path)
+        var json = JSON.parse(body)
+
+        const headers = {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Ocp-Apim-Subscription-Key': 'd788385e2e7349388f922cd2158dbf7c',
+            'token':json.token
+        }
+
+        delete json.token;
+        
+        return this.http.post(environment.endp_auth, json, { 'headers': headers });
+    }
+
     getLinea(): Observable<any> {
         const headers = {
             'Ocp-Apim-Subscription-Key': 'd788385e2e7349388f922cd2158dbf7c'
