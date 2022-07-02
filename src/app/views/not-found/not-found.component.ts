@@ -10,7 +10,7 @@ import { ResponseI } from 'src/app/models/response.interface';
 })
 export class NotFoundComponent implements OnInit {
 
-  user: ResponseI[] = [];;
+  user: ResponseI[] = [];
   constructor(private precioPiso: PrecioPisoDAOService, private router: Router) { }
 
   ngOnInit(): void {
